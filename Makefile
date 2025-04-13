@@ -1,7 +1,7 @@
 build:
 	./build.sh
 render-start:
-	gunicorn task_manager.wsgi
+	.venv/bin/python -m gunicorn --chdir hexlet-code task_manager.wsgi
 install:
 	uv sync
 
