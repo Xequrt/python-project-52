@@ -2,9 +2,10 @@
 {% bootstrap_css %}
 {% bootstrap_javascript %}
 {% bootstrap_messages %}
+{% load i18n %}
 
 <!doctype html>
-<html lang="en">
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %}{% endblock %}</title>
@@ -20,15 +21,13 @@
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="{% url 'index' %}" class="nav-link px-2 text-secondary">Home</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Users</a></li>
+          <li><a href="{% url 'index' %}" class="nav-link px-2 text-secondary">{% translate "Task Manager" %}</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">{% translate "Users" %}</a></li>
         </ul>
 
         <div class="text-end">
-            <button class="btn btn-outline-light me-2" onclick="location.href='{% url 'login' %}'">Login</button>
-            <button class="btn btn-warning" onclick="location.href='{% url 'signup' %}'">Sign-up</button>
-        </div>
-      </div>
+            <button class="btn btn-outline-light me-2" onclick="location.href='{% url 'login' %}'">{% translate "Login" %}</button>
+            <button class="btn btn-warning" onclick="location.href='{% url 'signup' %}'">{% translate "Sign-up" %}</button>
     </div>
   </header>
     {% block content %}{% endblock %}
