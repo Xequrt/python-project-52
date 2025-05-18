@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block title %}
+    {% translate "Form user" %}
+{% endblock %}
+
+{% block content %}
+    <h1>{% if view.action == 'create' %}{% translate "Create" %}{% else %}{% translate "Edit" %}{% endif %} {% translate "user" %}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">{% if view.action == 'create' %}{% translate "Create" %}{% else %}{% translate "Save" %}{% endif %}</button>
+    </form>
+{% endblock %}

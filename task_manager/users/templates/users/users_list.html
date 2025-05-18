@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+
+{% block title %}
+    {% translate "User list" %}
+{% endblock %}
+
+{% block content %}
+    <h1>{% translate "User list" %}</h1>
+    <ul>
+    {% for user in users %}
+        <li>
+            {{ user.username }}
+            <a href="{% url 'user_update' user.pk %}">{% translate "Edit" %}</a>
+            <a href="{% url 'user_delete' user.pk %}">{% translate "Delete" %}</a>
+        </li>
+    {% endfor %}
+    </ul>
+    <a href="{% url 'user_create' %}">{% translate "Create new user" %}</a>
+    <a href="{% url 'login' %}">{% translate "Login" %}</a>
+{% endblock %}

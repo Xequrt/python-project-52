@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+
+{% block title %}
+    {% translate "Login" %}
+{% endblock %}
+
+{% block content %}
+    <h1>{% translate "Login" %}</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="username">{% translate "Name:" %}</label>
+        <input type="text" name="username" id="username" required>
+        <label for="password">{% translate "Password:" %}</label>
+        <input type="password" name="password" id="password" required>
+        <button type="submit">{% translate "Login" %}</button>
+    </form>
+    <a href="{% url 'users_list' %}">{% translate "Back to user list" %}</a>
+{% endblock %}

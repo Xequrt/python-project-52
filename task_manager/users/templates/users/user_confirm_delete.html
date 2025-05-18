@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block title %}
+    {% translate "Delete user" %}
+{% endblock %}
+
+{% block content %}
+    <h1>{% translate "Delete user" %} {{ object.username }}?</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">{% translate "Yes, delete" %}</button>
+    </form>
+    <a href="{% url 'users_list' %}">{% translate "Return" %}</a>
+</body>
+{% endblock %}
