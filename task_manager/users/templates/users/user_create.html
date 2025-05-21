@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load django_bootstrap5 %}
+
+{% block title %}
+    {% if form.instance.pk %}
+        {% translate "Edit User" %}
+    {% else %}
+        {% translate "Create User" %}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>
+        {% if form.instance.pk %}
+            {% translate "Edit User" %}
+        {% else %}
+            {% translate "Create User" %}
+        {% endif %}
+    </h1>
+
+    <form method="post" class="mt-4">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <div class="buttons">
+            <button type="submit" class="btn btn-primary">{% translate "Save" %}</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -22,12 +22,12 @@
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a href="{% url 'index' %}" class="nav-link px-2 text-secondary">{% translate "Task Manager" %}</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">{% translate "Users" %}</a></li>
+          <li><a href="{% url 'users_list' %}" class="nav-link px-2 text-white">{% translate "Users" %}</a></li>
         </ul>
 
         <div class="text-end">
             <button class="btn btn-outline-light me-2" onclick="location.href='{% url 'login' %}'">{% translate "Login" %}</button>
-            <button class="btn btn-warning" onclick="location.href='{% url 'signup' %}'">{% translate "Sign-up" %}</button>
+            <button class="btn btn-warning" onclick="location.href='{% url 'user_create' %}'">{% translate "Sign-up" %}</button>
     </div>
     </header>
     {% block content %}{% endblock %}
