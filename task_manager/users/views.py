@@ -23,7 +23,7 @@ class UserListView(ListView):
 class UserCreateView(SuccessMessageMixin, CreateView):
     form_class = CustomUserForm
     template_name = 'users/user_create.html'
-    success_url = reverse_lazy('users_list')
+    success_url = reverse_lazy('login')
     success_message = "User created successfully!"
 
     def form_valid(self, form):
