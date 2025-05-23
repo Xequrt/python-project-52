@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib import messages
@@ -29,5 +30,13 @@ class UserLoginView(LoginView):
 
 class UserLogoutView(LogoutView):
     def dispatch(self, request, *args, **kwargs):
-        messages.info(request, _('You are logged out'))
+        if request.method == 'GET':
+            return HttpResponseRedirect(self.get_success_url())
         return super().dispatch(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        messages.info(request, _('You are logged out'))
+        return super().post(request, *args, **kwargs)
+
+    def get_success_url(self):
+        return reverse_lazy('index')
