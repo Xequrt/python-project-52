@@ -1,13 +1,14 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.models import User
-from django.http import HttpResponseRedirect
 from django.contrib.messages.views import SuccessMessageMixin
+from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.db import IntegrityError
 from django.shortcuts import get_object_or_404
 from .forms import CustomUserForm
+from django.core.exceptions import PermissionDenied
 
 
 class UserListView(ListView):
@@ -46,18 +47,18 @@ class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         obj = get_object_or_404(User, pk=self.kwargs.get('pk'))
         if not self.request.user.is_superuser and obj != self.request.user:
             messages.error(self.request, "You do not have permission to modify another user.")
-            return HttpResponseRedirect(reverse_lazy('users_list'))
+            raise PermissionDenied("You do not have permission to modify another user.")
         return obj
 
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
             messages.error(request, "Please log in to perform this action.")
-            return HttpResponseRedirect(reverse_lazy('login'))
+            raise PermissionDenied("Please log in to perform this action.")
         obj = self.get_object()
         if not self.request.user.is_superuser:
             if obj != self.request.user:
                 messages.error(request, "You do not have permission to modify another user.")
-                return HttpResponseRedirect(reverse_lazy('users_list'))
+                raise PermissionDenied("You do not have permission to modify another user.")
         return super().dispatch(request, *args, **kwargs)
 
 
@@ -73,7 +74,7 @@ class UserDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
         if not self.request.user.is_superuser:
             if obj != self.request.user:
                 messages.error(self.request, "You can only delete your own account.")
-                return HttpResponseRedirect(reverse_lazy('users_list'))
+                raise PermissionDenied("You can only delete your own account.")
         return obj
 
     def delete(self, request, *args, **kwargs):
