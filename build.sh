@@ -8,4 +8,7 @@ source $HOME/.local/bin/env
 make install && make collectstatic && make migrate
 
 uv run python3 manage.py migrate --noinput
-uv run python3 manage.py createsuperuser --noinput \ --username="$DJANGO_SUPERUSER_USERNAME" \ --email="$DJANGO_SUPERUSER_EMAIL"
+uv run python3 manage.py createsuperuser \
+    --username $DJANGO_SUPERUSER_USERNAME \
+    --email $DJANGO_SUPERUSER_EMAIL \
+    --noinput
