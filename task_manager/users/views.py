@@ -9,6 +9,8 @@ from django.db import IntegrityError
 from django.shortcuts import get_object_or_404
 from .forms import CustomUserForm
 from django.core.exceptions import PermissionDenied
+from django.shortcuts import redirect
+from django.http import request
 
 
 class UserListView(ListView):
@@ -43,22 +45,16 @@ class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     success_message = "User updated successfully!"
     login_url = _url = reverse_lazy('login')
 
-    def get_object(self, queryset=None):
-        obj = get_object_or_404(User, pk=self.kwargs.get('pk'))
-        if not self.request.user.is_superuser and obj != self.request.user:
-            messages.error(self.request, "You do not have permission to modify another user.")
-            raise PermissionDenied("You do not have permission to modify another user.")
-        return obj
+    def get_object(self, *args, **kwargs):
+        return get_object_or_404(User, pk=self.kwargs.get('pk'))
 
     def dispatch(self, request, *args, **kwargs):
-        if not request.user.is_authenticated:
-            messages.error(request, "Please log in to perform this action.")
-            raise PermissionDenied("Please log in to perform this action.")
         obj = self.get_object()
-        if not self.request.user.is_superuser:
-            if obj != self.request.user:
-                messages.error(request, "You do not have permission to modify another user.")
-                raise PermissionDenied("You do not have permission to modify another user.")
+
+        if not request.user.is_superuser and obj != request.user:
+            messages.error(request, "You do not have permission to modify another user.")
+            return redirect('users_list')
+
         return super().dispatch(request, *args, **kwargs)
 
 
@@ -70,12 +66,16 @@ class UserDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     login_url = _url = reverse_lazy('login')
 
     def get_object(self, queryset=None):
-        obj = get_object_or_404(User, pk=self.kwargs.get('pk'))
-        if not self.request.user.is_superuser:
-            if obj != self.request.user:
-                messages.error(self.request, "You can only delete your own account.")
-                raise PermissionDenied("You can only delete your own account.")
-        return obj
+        return get_object_or_404(User, pk=self.kwargs.get('pk'))
+
+    def dispatch(self, request, *args, **kwargs):
+        obj = self.get_object()
+
+        if not request.user.is_superuser and obj != request.user:
+            messages.error(request, "You can only delete your own account.")
+            return redirect('users_list')
+
+        return super().dispatch(request, *args, **kwargs)
 
     def delete(self, request, *args, **kwargs):
         try:
