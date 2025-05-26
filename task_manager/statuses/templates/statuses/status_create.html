@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load django_bootstrap5 %}
+
+{% block title %}{% translate "Create Status" %}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>{% translate "Create New Status" %}</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        
+        <div class="text-end">
+            <button type="submit" class="btn btn-primary">{% translate "Create" %}</button>
+            <a href="{% url 'statuses_list' %}" class="btn btn-secondary">{% translate "Cancel" %}</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
