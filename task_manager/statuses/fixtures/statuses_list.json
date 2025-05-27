@@ -1,0 +1,44 @@
+[
+    {
+        "model": "statuses.status",
+        "pk": 1,
+        "fields": {
+            "name": "Новый",
+            "created_at": "2025-05-26T13:23:05.750Z"
+        }
+    },
+    {
+        "model": "statuses.status",
+        "pk": 2,
+        "fields": {
+            "name": "В работе",
+            "created_at": "2025-05-26T13:23:05.750Z"
+        }
+    },
+    {
+       "model": "statuses.status",
+       "pk": 3,
+       "fields": {
+           "name": "Завершен",
+           "created_at": "2025-05-26T13:23:05.750Z"
+       }
+    },
+    {
+        "model": "auth.user",
+        "pk": 5,
+        "fields": {
+            "password": "pbkdf2_sha256$1000000$9L9672ix6bPXnFcZWb8Z7K$S+ztPasX0vf4hMp56QY612F7c1mfV2fMstdmhxP7qIU=",
+            "last_login": "2025-05-21T04:44:22.084Z",
+            "is_superuser": true,
+            "username": "admin",
+            "first_name": "",
+            "last_name": "",
+            "email": "admin@admin.ru",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2025-05-21T04:44:06.957Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    }
+]
