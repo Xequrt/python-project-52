@@ -8,7 +8,14 @@ source $HOME/.local/bin/env
 make install && make collectstatic && make migrate
 
 uv run python3 manage.py migrate --noinput
-uv run python3 manage.py createsuperuser \
-    --username $DJANGO_SUPERUSER_USERNAME \
-    --email $DJANGO_SUPERUSER_EMAIL \
-    --noinput
+
+SUPERUSER_EXISTS=$(python3 manage.py shell -c \
+"from django.contrib.auth.models import User; \
+print(User.objects.filter(username='$DJANGO_SUPERUSER_USERNAME').exists())")
+
+if [ "$SUPERUSER_EXISTS" = "False" ]; then
+    uv run python3 manage.py createsuperuser \
+        --username $DJANGO_SUPERUSER_USERNAME \
+        --email $DJANGO_SUPERUSER_EMAIL \
+        --noinput
+fi
