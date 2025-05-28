@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% translate "Tasks List" %}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>{% translate "Tasks List" %}</h1>
+
+    <div class="mb-3">
+        <a href="{% url 'tasks_create' %}" class="btn btn-primary">{% translate "Create Tasks" %}</a>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>{% translate "Name" %}</th>
+                <th>{% translate "Status" %}</th>
+                <th>{% translate "Author" %}</th>
+                <th>{% translate "Executor" %}</th>
+                <th>{% translate "Creation date" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+            <tr>
+                <td>{{ task.id }}</td>
+                <td>{{ task.name }}</td>
+                <td>{{ task.status }}</td>
+                <td>{{ task.author }}</td>
+                <td>{{ task.executor }}</td>
+                <td>{{ task.created_at|date:"d.m.Y H:i" }}</td>
+                <td>
+                    <a href="{% url 'tasks_update' task.pk %}" class="btn btn-sm btn-warning">{% translate "Edit" %}</a>
+                    <a href="{% url 'tasks_delete' task.pk %}" class="btn btn-sm btn-danger">{% translate "Delete" %}</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

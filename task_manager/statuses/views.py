@@ -77,5 +77,5 @@ class StatusesDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
         try:
             return super().delete(request, *args, **kwargs)
         except IntegrityError:
-            messages.error(self.request, _("Failed to delete user."))
+            messages.error(self.request, _("Failed to delete status."))
             return render(self.request, self.template_name, self.get_context_data())
