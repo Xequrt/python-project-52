@@ -6,7 +6,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.db import IntegrityError
 from django.utils.translation import gettext_lazy as _
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from .models import Task
 from .forms import TaskForm
 
@@ -69,6 +69,13 @@ class TasksDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     def get_object(self, queryset=None):
         return get_object_or_404(Task, pk=self.kwargs.get('pk'))
 
+    def dispatch(self, request, *args, **kwargs):
+        obj = self.get_object()
+
+        if not request.user.is_superuser and obj != request.user:
+            messages.error(request, _("You can only delete your own task"))
+            return redirect('tasks_list')
+        return super().dispatch(request, *args, **kwargs)
 
     def delete(self, request, *args, **kwargs):
         if self.object.task_set.exists():
