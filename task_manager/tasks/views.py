@@ -48,7 +48,13 @@ class TasksUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     def get_object(self, *args, **kwargs):
         return get_object_or_404(Task, pk=self.kwargs.get('pk'))
 
+    def dispatch(self, request, *args, **kwargs):
+        obj = self.get_object()
 
+        if not request.user.is_superuser and obj != request.user:
+            messages.error(request, _("You can only update your own task"))
+            return redirect('tasks_list')
+        return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
         try:
