@@ -29,7 +29,11 @@
                 <td>{{ task.name }}</td>
                 <td>{{ task.status }}</td>
                 <td>{{ task.author }}</td>
+                {% if task.executor is None%}
+                <td></td>
+                {% else %}
                 <td>{{ task.executor }}</td>
+                {% endif %}
                 <td>{{ task.created_at|date:"d.m.Y H:i" }}</td>
                 <td>
                     <a href="{% url 'tasks_update' task.pk %}" class="btn btn-sm btn-warning">{% translate "Edit" %}</a>
