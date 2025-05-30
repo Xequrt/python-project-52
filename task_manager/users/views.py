@@ -8,9 +8,7 @@ from django.contrib import messages
 from django.db import IntegrityError
 from django.shortcuts import get_object_or_404
 from .forms import CustomUserForm
-from django.core.exceptions import PermissionDenied
 from django.shortcuts import redirect
-from django.http import request
 from django.utils.translation import gettext_lazy as _
 
 
