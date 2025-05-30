@@ -20,7 +20,6 @@ class TaskTest(TestCase):
         response = self.client.post(reverse('tasks_create'),
             {
                 'name': 'test_task',
-                'executor': 6,
                 'status': 2
             }
         )
@@ -35,7 +34,6 @@ class TaskTest(TestCase):
                                             kwargs={'pk': task.pk}),
             {
                 'name': '#3 test',
-                'executor': 6,
                 'status': 2
             }
         )

@@ -26,6 +26,7 @@ class Task(models.Model):
         User,
         on_delete=models.PROTECT,
         null=True,
+        blank=True,
         related_name='executor_tasks',
         verbose_name=_('Executor'),
         help_text=_('User responsible for the task')
