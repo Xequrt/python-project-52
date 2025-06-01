@@ -1,0 +1,18 @@
+[
+    {
+        "model": "labels.label",
+        "pk": 1,
+        "fields": {
+            "name": "Фича",
+            "created_at": "2025-05-30T14:43:52.230Z"
+        }
+    },
+    {
+        "model": "labels.label",
+        "pk": 2,
+        "fields": {
+            "name": "Баг",
+            "created_at": "2025-05-30T15:04:41.698Z"
+        }
+    }
+]

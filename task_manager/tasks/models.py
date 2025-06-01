@@ -50,7 +50,6 @@ class Task(models.Model):
 
     labels = models.ManyToManyField(
         Label,
-        null=True,
         blank=True,
         verbose_name=_('Label'),
         help_text=_('Current task label')
