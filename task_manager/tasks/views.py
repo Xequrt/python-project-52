@@ -1,6 +1,6 @@
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
@@ -21,11 +21,19 @@ class TasksListView(LoginRequiredMixin, ListView):
         return super().get_queryset().order_by('name')
 
 
-class TasksCreateView(SuccessMessageMixin, CreateView):
+class TaskView(LoginRequiredMixin, DetailView):
+    model = Task
+    template_name = 'tasks/task_view.html'
+    context_object_name = 'task'
+    login_url = reverse_lazy('login')
+
+class TasksCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     form_class = TaskForm
     template_name = 'tasks/tasks_create.html'
     success_url = reverse_lazy('tasks_list')
     success_message = _("Task created successfully!")
+    login_url = reverse_lazy('login')
+
 
     def form_valid(self, form):
         try:
@@ -51,7 +59,7 @@ class TasksUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     def dispatch(self, request, *args, **kwargs):
         obj = self.get_object()
 
-        if not request.user.is_superuser and obj != request.user:
+        if not request.user.is_superuser and obj.author != request.user:
             messages.error(request, _("You can only update your own task"))
             return redirect('tasks_list')
         return super().dispatch(request, *args, **kwargs)
@@ -78,7 +86,7 @@ class TasksDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     def dispatch(self, request, *args, **kwargs):
         obj = self.get_object()
 
-        if not request.user.is_superuser and obj != request.user:
+        if not request.user.is_superuser and obj.author != request.user:
             messages.error(request, _("You can only delete your own task"))
             return redirect('tasks_list')
         return super().dispatch(request, *args, **kwargs)

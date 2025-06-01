@@ -26,6 +26,7 @@
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'statuses_list' %}" class="nav-link px-2 text-white">{% translate "Statuses" %}</a></li>
                     <li><a href="{% url 'tasks_list' %}" class="nav-link px-2 text-white">{% translate "Tasks" %}</a></li>
+                    <li><a href="{% url 'labels_list' %}" class="nav-link px-2 text-white">{% translate "Labels" %}</a></li>
                     {% endif %}
                 </ul>
                     {% if user.is_authenticated %}

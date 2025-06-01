@@ -21,11 +21,13 @@ class StatusesListView(LoginRequiredMixin, ListView):
         return super().get_queryset().order_by('name')
 
 
-class StatusesCreateView(SuccessMessageMixin, CreateView):
+class StatusesCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     form_class = StatusForm
     template_name = 'statuses/status_create.html'
     success_url = reverse_lazy('statuses_list')
     success_message = _("Status created successfully!")
+    login_url = reverse_lazy('login')
+
 
     def form_valid(self, form):
         try:

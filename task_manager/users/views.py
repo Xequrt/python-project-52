@@ -21,11 +21,13 @@ class UserListView(ListView):
         return super().get_queryset().order_by('username')
 
 
-class UserCreateView(SuccessMessageMixin, CreateView):
+class UserCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     form_class = CustomUserForm
     template_name = 'users/user_create.html'
     success_url = reverse_lazy('login')
     success_message = "User created successfully!"
+    login_url = reverse_lazy('login')
+
 
     def form_valid(self, form):
         try:
