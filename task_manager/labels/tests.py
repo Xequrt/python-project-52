@@ -55,5 +55,5 @@ class LabelTest(TestCase):
         )
 
         self.assertEqual(response.status_code, 302)
-        self.assertNotEqual(label.author, self.another_user)
+        self.assertNotEqual(label.name, self.another_user)
         self.assertTrue(Label.objects.filter(name='Фича').exists())
