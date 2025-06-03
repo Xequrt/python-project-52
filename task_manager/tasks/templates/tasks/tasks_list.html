@@ -11,6 +11,26 @@
         <a href="{% url 'tasks_create' %}" class="btn btn-primary">{% translate "Create Tasks" %}</a>
     </div>
 
+    <form method="get" class="p-4 bg-light rounded border shadow-sm mb-4">
+        <div class="mb-3">
+          <label for="id_status" class="form-label">{% translate "Status" %}</label>
+          {{ filter.form.status }}
+        </div>
+        <div class="mb-3">
+          <label for="id_executor" class="form-label">{% translate "Executor" %}</label>
+          {{ filter.form.executor }}
+        </div>
+        <div class="mb-3">
+          <label for="id_labels" class="form-label">{% translate "Label" %}</label>
+          {{ filter.form.labels }}
+        </div>
+        <div class="form-check mb-3">
+          {{ filter.form.is_author }}
+          <label for="id_is_author" class="form-check-label">{% translate "Your tasks" %}</label>
+        </div>
+        <button type="submit" class="btn btn-primary">{% translate "Show" %}</button>
+    </form>
+
     <table class="table table-striped">
         <thead>
             <tr>
@@ -30,9 +50,9 @@
                 <td>{{ task.status }}</td>
                 <td>{{ task.author }}</td>
                 {% if task.executor is None %}
-                <td></td>
+                    <td></td>
                 {% else %}
-                <td>{{ task.executor }}</td>
+                    <td>{{ task.executor }}</td>
                 {% endif %}
                 <td>{{ task.created_at|date:"d.m.Y H:i" }}</td>
                 <td>

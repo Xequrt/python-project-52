@@ -9,12 +9,15 @@ from django.utils.translation import gettext_lazy as _
 from django.shortcuts import get_object_or_404, render, redirect
 from .models import Task
 from .forms import TaskForm
+from django_filters.views import FilterView
+from .filter import TaskFilter
 
 
-class TasksListView(LoginRequiredMixin, ListView):
+class TasksListView(LoginRequiredMixin, FilterView):
     model = Task
     template_name = 'tasks/tasks_list.html'
     context_object_name = 'tasks'
+    filterset_class = TaskFilter
     login_url = reverse_lazy('login')
 
     def get_queryset(self):
