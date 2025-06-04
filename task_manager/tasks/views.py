@@ -11,7 +11,6 @@ from .models import Task
 from .forms import TaskForm
 from django_filters.views import FilterView
 from .filter import TaskFilter
-import rollbar
 
 
 class TasksListView(LoginRequiredMixin, FilterView):
@@ -42,10 +41,8 @@ class TasksCreateView(SuccessMessageMixin, CreateView):
         try:
             form.instance.author = self.request.user
             response = super().form_valid(form)
-            rollbar.report_exc_info()
             return response
         except IntegrityError:
-            rollbar.report_exc_info()
             messages.error(self.request, _("Task with this name already exists"))
             return self.render_to_response(self.get_context_data(form=form))
 
