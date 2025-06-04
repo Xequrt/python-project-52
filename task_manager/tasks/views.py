@@ -11,6 +11,7 @@ from .models import Task
 from .forms import TaskForm
 from django_filters.views import FilterView
 from .filter import TaskFilter
+import rollbar
 
 
 class TasksListView(LoginRequiredMixin, FilterView):
@@ -30,20 +31,21 @@ class TaskView(LoginRequiredMixin, DetailView):
     context_object_name = 'task'
     login_url = reverse_lazy('login')
 
-class TasksCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+class TasksCreateView(SuccessMessageMixin, CreateView):
     form_class = TaskForm
     template_name = 'tasks/tasks_create.html'
     success_url = reverse_lazy('tasks_list')
     success_message = _("Task created successfully!")
-    login_url = reverse_lazy('login')
 
 
     def form_valid(self, form):
         try:
             form.instance.author = self.request.user
             response = super().form_valid(form)
+            rollbar.report_exc_info()
             return response
         except IntegrityError:
+            rollbar.report_exc_info()
             messages.error(self.request, _("Task with this name already exists"))
             return self.render_to_response(self.get_context_data(form=form))
 
