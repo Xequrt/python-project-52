@@ -31,7 +31,7 @@ class LabelsCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 
     def form_valid(self, form):
         try:
-            form.instance.author = self.request.user
+            form.instance.name = form.cleaned_data['name']
             response = super().form_valid(form)
             return response
         except IntegrityError:

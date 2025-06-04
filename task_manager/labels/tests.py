@@ -19,11 +19,11 @@ class LabelTest(TestCase):
     def test_create_label(self):
         response = self.client.post(reverse('label_create'),
             {
-                'name': 'Фича',
+                'name': 'Новая метка',
             }
         )
         self.assertEqual(response.status_code, 302)
-        self.assertTrue(Label.objects.filter(name='Фича').exists())
+        self.assertTrue(Label.objects.filter(name='Новая метка').exists())
 
     def test_update_label(self):
         label = Label.objects.get(pk=1)
