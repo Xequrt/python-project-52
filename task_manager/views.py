@@ -11,7 +11,7 @@ class IndexView(TemplateView):
 
 
 class UserLoginView(LoginView):
-    template_name = 'logins.html'
+    template_name = 'login.html'
     redirect_authenticated_user = True
 
     def form_valid(self, form):
