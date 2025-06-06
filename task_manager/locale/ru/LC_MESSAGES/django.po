@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-06 04:09+0000\n"
+"POT-Creation-Date: 2025-06-06 20:05+1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -455,7 +455,9 @@ msgstr "Действия"
 
 #: task_manager/users/views.py:84
 msgid "This user is currently assigned to tasks and cannot be deleted"
-msgstr "Этот пользователь в данный момент назначен для выполнения задач и не может быть удален"
+msgstr ""
+"Этот пользователь в данный момент назначен для выполнения задач и не может "
+"быть удален"
 
 #: task_manager/users/views.py:88
 msgid "You cannot delete your own account"
@@ -466,12 +468,16 @@ msgid "You are logged in"
 msgstr "Вы вошли"
 
 #: task_manager/views.py:23
+#, fuzzy
+#| msgid ""
+#| "Please enter a valid username and password. \n"
+#| " Both fields may be case sensitive."
 msgid ""
 "Please enter a valid username and password. \n"
 "                            Both fields may be case sensitive."
 msgstr ""
 "Пожалуйста, введите действительные имя пользователя и пароль. \n"
-"В обоих полях может быть чувствителен регистр".
+" В обоих полях может быть чувствителен регистр."
 
 #: task_manager/views.py:38
 msgid "You are logged out"
