@@ -1,0 +1,48 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
+
+    - name: Install Hatch
+      run: pip install hatch
+
+    - name: Create virtual environment with Hatch
+      run: hatch env create
+
+    - name: Set up Docker Compose
+      run: |
+        docker-compose -f docker-compose.yml down --remove-orphans
+        docker system prune -a -f
+
+    - name: Build containers
+      run: docker-compose -f docker-compose.yml build --no-cache
+
+    - name: Start containers
+      run: docker-compose -f docker-compose.yml up -d
+
+    - name: Verify Django installation
+      run: |
+        # Ждем запуска контейнера
+        sleep 10  
+        # Проверяем наличие Django
+        docker-compose exec -T server-1 python -c "import django; print('Django version:', django.__version__)"
+
+    - name: Check container logs
+      if: always()
+      run: docker-compose logs server-1
