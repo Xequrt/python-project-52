@@ -68,7 +68,7 @@ MIDDLEWARE = [
 
 ROLLBAR = {
     'access_token': os.getenv('ROLLBAR_ACCESS_TOKEN'),
-    'environment': 'production',
+    'environment': 'development',
     'code_version': '1.0',
     'root': BASE_DIR,
 }
