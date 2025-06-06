@@ -6,16 +6,16 @@ install:
 	uv sync
 
 collectstatic:
-	python3 manage.py collectstatic --noinput
+	uv run python3 manage.py collectstatic --noinput
 
 migrate:
-	python3 manage.py migrate
+	uv run python3 manage.py migrate
 
 run:
-	python3 manage.py runserver
+	uv run python3 manage.py runserver
 
 test:
-	python3 manage.py test
+	uv run python3 manage.py test
 
 lint:
 	uv run ruff check .
