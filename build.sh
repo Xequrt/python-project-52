@@ -7,8 +7,6 @@ source $HOME/.local/bin/env
 # команду установки зависимостей, сборки статики, применения миграций и другие
 make install && make collectstatic && make migrate
 
-uv run python3 manage.py migrate --noinput
-
 SUPERUSER_EXISTS=$(python3 manage.py shell -c \
 "from django.contrib.auth.models import User; \
 print(User.objects.filter(username='$DJANGO_SUPERUSER_USERNAME').exists())")
