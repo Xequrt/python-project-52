@@ -11,6 +11,14 @@ class UserCreationTest(TestCase):
     def setUp(self):
         self.user = User.objects.get(username='admin')
         self.client.force_login(self.user)
+        User.objects.create(username='user1')
+        User.objects.create(username='user2')
+        User.objects.create(username='user3')
+
+    def test_load_users(self):
+        users = User.objects.all()
+        print(users)
+        self.assertEqual(len(users), 6)
 
     def test_user_admin(self):
         response = self.client.get(reverse('admin:index'))
