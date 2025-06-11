@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+import dj_database_url
 
 load_dotenv()
 
@@ -30,7 +31,7 @@ DJANGO_SUPERUSER_EMAIL = os.getenv('DJANGO_SUPERUSER_EMAIL')
 DJANGO_SUPERUSER_PASSWORD = os.getenv('DJANGO_SUPERUSER_PASSWORD')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['webserver', '127.0.0.1', 'localhost', 'task-manager-hik7.onrender.com']
 
@@ -63,15 +64,15 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.middleware.locale.LocaleMiddleware",
-    "rollbar.contrib.django.middleware.RollbarNotifierMiddleware",
+    # "rollbar.contrib.django.middleware.RollbarNotifierMiddleware",
 ]
 
-ROLLBAR = {
-    'access_token': os.getenv('ROLLBAR_ACCESS_TOKEN'),
-    'environment': 'production',
-    'code_version': '1.0',
-    'root': BASE_DIR,
-}
+# ROLLBAR = {
+#     'access_token': os.getenv('ROLLBAR_ACCESS_TOKEN'),
+#     'environment': 'development',
+#     'code_version': '1.0',
+#     'root': BASE_DIR,
+# }
 
 ROOT_URLCONF = "task_manager.urls"
 
@@ -97,17 +98,26 @@ WSGI_APPLICATION = "task_manager.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.sqlite3'),
+#         'NAME': os.getenv('DB_NAME', 'db.sqlite3'),
+#         'USER': os.getenv('DB_USER', ''),
+#         'PASSWORD': os.getenv('DB_PASSWORD', ''),
+#         'HOST': os.getenv('DB_HOST', ''),
+#         'PORT': os.getenv('DB_PORT', ''),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.sqlite3'),
-        'NAME': os.getenv('DB_NAME', 'db.sqlite3'),
-        'USER': os.getenv('DB_USER', ''),
-        'PASSWORD': os.getenv('DB_PASSWORD', ''),
-        'HOST': os.getenv('DB_HOST', ''),
-        'PORT': os.getenv('DB_PORT', ''),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES["default"].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
