@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-06 20:05+1000\n"
+"POT-Creation-Date: 2025-06-15 12:37+1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -118,6 +118,7 @@ msgstr "Список меток"
 #: task_manager/labels/templates/labels/labels_list.html:19
 #: task_manager/statuses/templates/statuses/statuses_list.html:19
 #: task_manager/tasks/templates/tasks/tasks_list.html:42
+#: task_manager/users/templates/users/users_list.html:20
 msgid "Creation date"
 msgstr "Дата создания"
 
@@ -362,55 +363,42 @@ msgstr "Вход"
 msgid "Sign-up"
 msgstr "Регистрация"
 
-#: task_manager/users/forms.py:10
-#: task_manager/users/templates/users/users_list.html:18
-msgid "Email"
-msgstr "Адрес электронной почты"
-
-#: task_manager/users/forms.py:12
-msgid "Required. Enter a valid email address."
-msgstr "Обязательное. Введите действительный адрес электронной почты."
-
-#: task_manager/users/forms.py:15
+#: task_manager/users/forms.py:9
 msgid "First name"
 msgstr "Имя"
 
-#: task_manager/users/forms.py:18
+#: task_manager/users/forms.py:12
 msgid "Required. Enter your first name."
 msgstr "Обязательное. Введите Ваше имя."
 
-#: task_manager/users/forms.py:21
+#: task_manager/users/forms.py:15
 msgid "Last name"
 msgstr "Фамилия"
 
-#: task_manager/users/forms.py:24
+#: task_manager/users/forms.py:18
 msgid "Required. Enter your last name."
 msgstr "Обязательное. Введите Вашу фамилию."
 
-#: task_manager/users/forms.py:31
-#: task_manager/users/templates/users/users_list.html:17
+#: task_manager/users/forms.py:25
+#: task_manager/users/templates/users/users_list.html:18
 #, fuzzy
 #| msgid "Users"
 msgid "Username"
 msgstr "Логин"
 
-#: task_manager/users/forms.py:32
+#: task_manager/users/forms.py:26
 msgid "Password"
 msgstr "Пароль"
 
-#: task_manager/users/forms.py:33
+#: task_manager/users/forms.py:27
 msgid "Password confirmation"
 msgstr "Подтверждение пароля"
 
-#: task_manager/users/forms.py:39
-msgid "Email already exists."
-msgstr "Электронная почта уже используется."
-
-#: task_manager/users/forms.py:48
+#: task_manager/users/forms.py:37
 msgid "First name should contain only letters."
 msgstr "Имя должно состоять только из букв."
 
-#: task_manager/users/forms.py:50
+#: task_manager/users/forms.py:39
 msgid "Last name should contain only letters."
 msgstr "Фамилия должна состоять только из букв."
 
@@ -442,16 +430,10 @@ msgid "Users List"
 msgstr "Список пользователей"
 
 #: task_manager/users/templates/users/users_list.html:19
-msgid "First Name"
-msgstr "Имя"
-
-#: task_manager/users/templates/users/users_list.html:20
-msgid "Last Name"
-msgstr "Фамилия"
-
-#: task_manager/users/templates/users/users_list.html:21
-msgid "Actions"
-msgstr "Действия"
+#, fuzzy
+#| msgid "First Name"
+msgid "Full Name"
+msgstr "Полное имя"
 
 #: task_manager/users/views.py:84
 msgid "This user is currently assigned to tasks and cannot be deleted"
@@ -482,3 +464,18 @@ msgstr ""
 #: task_manager/views.py:38
 msgid "You are logged out"
 msgstr "Вы вышли"
+
+#~ msgid "Email"
+#~ msgstr "Адрес электронной почты"
+
+#~ msgid "Required. Enter a valid email address."
+#~ msgstr "Обязательное. Введите действительный адрес электронной почты."
+
+#~ msgid "Email already exists."
+#~ msgstr "Электронная почта уже используется."
+
+#~ msgid "Last Name"
+#~ msgstr "Фамилия"
+
+#~ msgid "Actions"
+#~ msgstr "Действия"
