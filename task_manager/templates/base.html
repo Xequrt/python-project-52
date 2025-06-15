@@ -29,19 +29,33 @@
                     <li><a href="{% url 'labels_list' %}" class="nav-link px-2 text-white">{% translate "Labels" %}</a></li>
                     {% endif %}
                 </ul>
+                <div class="d-flex align-items-stretch">
                     {% if user.is_authenticated %}
-                    <div class="text-end">
+                    <div class="text-end me-2">
                         <form method="post" action="{% url 'logout' %}">
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-outline-light me-2">{% translate "Logout" %}</button>
+                            <button class="btn-warning" onclick="location.href='{% url 'logout' %}'">{% translate "Logout" %}</button>
                         </form>
                     </div>
                     {% else %}
-                    <div class="text-end">
+                    <div class="text-end me-2">
                         <button class="btn btn-outline-light me-2" onclick="location.href='{% url 'login' %}'">{% translate "Login" %}</button>
                         <button class="btn btn-warning" onclick="location.href='{% url 'user_create' %}'">{% translate "Sign-up" %}</button>
                     </div>
                     {% endif %}
+                    <form action="{% url 'set_language' %}" method="post" class="d-flex align-items-center ms-auto">
+                        {% csrf_token %}
+                        <button type="submit" name="language" value="ru"
+                                class="btn btn-sm btn-outline-light me-2 {% if LANGUAGE_CODE == 'ru' %}border-white{% endif %}">
+                            RU
+                        </button>
+                        <button type="submit" name="language" value="en"
+                                class="btn btn-sm btn-outline-light {% if LANGUAGE_CODE == 'en' %}border-white{% endif %}">
+                            EN
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
     </header>
     {% block content %}{% endblock %}

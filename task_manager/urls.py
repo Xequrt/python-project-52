@@ -19,6 +19,7 @@ from django.urls import path, include
 from .views import IndexView, UserLoginView, UserLogoutView
 
 urlpatterns = [
+    path('i18n/', include('django.conf.urls.i18n')),
     path('', IndexView.as_view(), name='index'),
     path('users/', include('task_manager.users.urls')),
     path('statuses/', include('task_manager.statuses.urls')),
