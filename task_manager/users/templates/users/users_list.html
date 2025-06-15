@@ -14,20 +14,20 @@
     <table class="table table-striped">
         <thead>
             <tr>
+                <th>ID</th>
                 <th>{% translate "Username" %}</th>
-                <th>{% translate "Email" %}</th>
-                <th>{% translate "First Name" %}</th>
-                <th>{% translate "Last Name" %}</th>
-                <th>{% translate "Actions" %}</th>
+                <th>{% translate "Full Name" %}</th>
+                <th>{% translate "Creation date" %}</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             {% for user in users %}
             <tr>
+                <td>{{ user.id }}</td>
                 <td>{{ user.username }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.first_name }}</td>
-                <td>{{ user.last_name }}</td>
+                <td>{{ user.first_name }} {{ user.last_name }}</td>
+                <td>{{ user.date_joined|date:"d.m.Y H:i" }}</td>
                 <td>
                     <a href="{% url 'user_update' user.id %}" class="btn btn-sm btn-warning">{% translate "Edit" %}</a>
                     <a href="{% url 'user_delete' user.id %}" class="btn btn-sm btn-danger">{% translate "Delete" %}</a>

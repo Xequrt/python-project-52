@@ -32,7 +32,6 @@ class UserCreationTest(TestCase):
                 'username': 'test',
                 'password1': 'TestUserPassword',
                 'password2': 'TestUserPassword',
-                'email': 'test@test.ru',
                 'first_name': 'test',
                 'last_name': 'test',
             }
