@@ -8,6 +8,9 @@ install:
 collectstatic:
 	uv run python3 manage.py collectstatic --noinput
 
+compilemessages:
+	uv run django-admin compilemessages
+
 migrate:
 	uv run python3 manage.py migrate
 
