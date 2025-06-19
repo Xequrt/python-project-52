@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-15 12:37+1000\n"
+"POT-Creation-Date: 2025-06-19 11:12+1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,7 +45,7 @@ msgstr "Метка"
 
 #: task_manager/labels/models.py:19 task_manager/tasks/filter.py:22
 #: task_manager/tasks/templates/tasks/task_view.html:38
-#: task_manager/templates/base.html:29
+#: task_manager/templates/base.html:30
 msgid "Labels"
 msgstr "Метки"
 
@@ -167,7 +167,7 @@ msgstr "Статус с этим именем уже существует"
 msgid "Status"
 msgstr "Статус"
 
-#: task_manager/statuses/models.py:15 task_manager/templates/base.html:27
+#: task_manager/statuses/models.py:15 task_manager/templates/base.html:28
 msgid "Statuses"
 msgstr "Статусы"
 
@@ -269,7 +269,7 @@ msgstr "Метка текущей задачи"
 msgid "Task"
 msgstr "Задача"
 
-#: task_manager/tasks/models.py:62 task_manager/templates/base.html:28
+#: task_manager/tasks/models.py:62 task_manager/templates/base.html:29
 msgid "Tasks"
 msgstr "Задачи"
 
@@ -341,27 +341,40 @@ msgstr "Эта задача в настоящее время используе�
 msgid "Failed to delete task."
 msgstr "Ошибка при удалении задачи"
 
-#: task_manager/templates/base.html:24 task_manager/templates/index.html:7
+#: task_manager/templates/base.html:25 task_manager/templates/index.html:7
 #: task_manager/templates/index.html:11
 msgid "Task Manager"
 msgstr "Менеджер задач"
 
-#: task_manager/templates/base.html:25
+#: task_manager/templates/base.html:26
 msgid "Users"
 msgstr "Пользователи"
 
-#: task_manager/templates/base.html:36
+#: task_manager/templates/base.html:38
+#, fuzzy
+#| msgid "Logout"
+msgctxt "menu_item"
 msgid "Logout"
 msgstr "Выход"
 
-#: task_manager/templates/base.html:41 task_manager/templates/login.html:7
-#: task_manager/templates/login.html:15
-msgid "Login"
+#: task_manager/templates/base.html:43 task_manager/templates/login.html:15
+msgctxt "menu_item"
+msgid "Log In"
 msgstr "Вход"
 
-#: task_manager/templates/base.html:42
-msgid "Sign-up"
+#: task_manager/templates/base.html:44
+#, fuzzy
+#| msgid "Sign-up"
+msgctxt "menu_item"
+msgid "Sign Up"
 msgstr "Регистрация"
+
+#: task_manager/templates/login.html:7
+#, fuzzy
+#| msgctxt "menu_item"
+#| msgid "Log In"
+msgid "Log In"
+msgstr "Вход"
 
 #: task_manager/users/forms.py:9
 msgid "First name"
@@ -464,6 +477,9 @@ msgstr ""
 #: task_manager/views.py:38
 msgid "You are logged out"
 msgstr "Вы вышли"
+
+#~ msgid "Login"
+#~ msgstr "Вход"
 
 #~ msgid "Email"
 #~ msgstr "Адрес электронной почты"

@@ -4,7 +4,7 @@
 {% load i18n %}
 
 {% block title %}
-    {% translate "Login" %}
+    {% trans "Log In" %}
 {% endblock %}
 
 {% block content %}
@@ -12,7 +12,7 @@
         {% csrf_token %}
         {% bootstrap_form form %}
         <div class="buttons">
-            <button type="submit" class="btn btn-primary">{% translate "Login" %}</button>
+            <button type="submit" class="btn btn-primary">{% trans "Log In" context "menu_item" %}</button>
         </div>
     </form>
 {% endblock %}

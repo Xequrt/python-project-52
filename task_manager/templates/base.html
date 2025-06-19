@@ -35,13 +35,13 @@
                     <div class="text-end me-2">
                         <form method="post" action="{% url 'logout' %}">
                             {% csrf_token %}
-                            <button class="btn-warning" onclick="location.href='{% url 'logout' %}'">{% translate "Logout" %}</button>
+                            <button class="btn-warning" onclick="location.href='{% url 'logout' %}'">{% trans "Logout" context "menu_item" %}</button>
                         </form>
                     </div>
                     {% else %}
                     <div class="text-end me-2">
-                        <button class="btn btn-outline-light me-2" onclick="location.href='{% url 'login' %}'">{% translate "Login" %}</button>
-                        <button class="btn btn-warning" onclick="location.href='{% url 'user_create' %}'">{% translate "Sign-up" %}</button>
+                        <button class="btn btn-outline-light me-2" onclick="location.href='{% url 'login' %}'">{% trans "Log In" context "menu_item" %}</button>
+                        <button class="btn btn-warning" onclick="location.href='{% url 'user_create' %}'">{% trans "Sign Up" context "menu_item" %}</button>
                     </div>
                     {% endif %}
                     <form action="{% url 'set_language' %}" method="post" class="d-flex align-items-center ms-auto">
