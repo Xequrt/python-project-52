@@ -40,10 +40,21 @@
                     </div>
                     {% else %}
                     <div class="text-end me-2">
-                        <a class="nav-link" href="{% url 'login' %}">{% trans "Log In" context "menu_item" %}</a>
-                        <a class="nav-link" href="{% url 'user_create' %}">{% trans "Sign Up" context "menu_item" %}</a>
+                        <button class="btn btn-outline-light me-2" onclick="location.href='{% url 'login' %}'">{% trans "Log In" context "menu_item" %}</button>
+                        <button class="btn btn-warning" onclick="location.href='{% url 'user_create' %}'">{% trans "Sign Up" context "menu_item" %}</button>
                     </div>
                     {% endif %}
+                    <form action="{% url 'set_language' %}" method="post" class="d-flex align-items-center ms-auto">
+                        {% csrf_token %}
+                        <button type="submit" name="language" value="ru"
+                                class="btn btn-sm btn-outline-light me-2 {% if LANGUAGE_CODE == 'ru' %}border-white{% endif %}">
+                            RU
+                        </button>
+                        <button type="submit" name="language" value="en"
+                                class="btn btn-sm btn-outline-light {% if LANGUAGE_CODE == 'en' %}border-white{% endif %}">
+                            EN
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>

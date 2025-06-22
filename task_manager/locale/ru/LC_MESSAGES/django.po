@@ -363,8 +363,6 @@ msgid "Log In"
 msgstr "Вход"
 
 #: task_manager/templates/base.html:44
-#, fuzzy
-#| msgid "Sign-up"
 msgctxt "menu_item"
 msgid "Sign Up"
 msgstr "Регистрация"
