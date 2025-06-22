@@ -460,7 +460,7 @@ msgstr "Вы не можете удалить свою учетную запис
 
 #: task_manager/views.py:18
 msgid "You are logged in"
-msgstr "Вы вошли"
+msgstr "Вы залогинены"
 
 #: task_manager/views.py:23
 #, fuzzy
