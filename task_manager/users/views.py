@@ -12,11 +12,10 @@ from django.shortcuts import redirect
 from django.utils.translation import gettext_lazy as _
 
 
-class UserListView(LoginRequiredMixin, ListView):
+class UserListView(ListView):
     model = User
     template_name = 'users/users_list.html'
     context_object_name = 'users'
-    login_url = reverse_lazy('login')
 
     def get_queryset(self):
         return super().get_queryset().order_by('username')
