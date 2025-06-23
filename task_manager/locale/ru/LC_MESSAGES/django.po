@@ -392,10 +392,8 @@ msgstr "Обязательное. Введите Вашу фамилию."
 
 #: task_manager/users/forms.py:25
 #: task_manager/users/templates/users/users_list.html:18
-#, fuzzy
-#| msgid "Users"
 msgid "Username"
-msgstr "Логин"
+msgstr "Имя пользователя"
 
 #: task_manager/users/forms.py:26
 msgid "Password"
