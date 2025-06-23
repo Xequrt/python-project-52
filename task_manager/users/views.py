@@ -25,7 +25,7 @@ class UserCreateView(SuccessMessageMixin, CreateView):
     form_class = CustomUserForm
     template_name = 'users/user_create.html'
     success_url = reverse_lazy('login')
-    success_message = "User created successfully!"
+    success_message = _("User created successfully!")
     login_url = reverse_lazy('login')
 
 
@@ -34,7 +34,7 @@ class UserCreateView(SuccessMessageMixin, CreateView):
             response = super().form_valid(form)
             return response
         except IntegrityError:
-            messages.error(self.request, "User with this username already exists.")
+            messages.error(self.request, _("User with this username already exists."))
             return self.render_to_response(self.get_context_data(form=form))
 
 
@@ -53,7 +53,7 @@ class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         obj = self.get_object()
 
         if not request.user.is_superuser and obj != request.user:
-            messages.error(request, "You do not have permission to modify another user.")
+            messages.error(request, _("You do not have permission to modify another user."))
             return redirect('users_list')
 
         return super().dispatch(request, *args, **kwargs)
@@ -63,7 +63,7 @@ class UserDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = User
     template_name = 'users/user_confirm_delete.html'
     success_url = reverse_lazy('users_list')
-    success_message = "User deleted successfully!"
+    success_message = _("User deleted successfully!")
     login_url = _url = reverse_lazy('login')
 
     def get_object(self, queryset=None):
@@ -73,7 +73,7 @@ class UserDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
         obj = self.get_object()
 
         if not request.user.is_superuser and obj != request.user:
-            messages.error(request, "You can only delete your own account.")
+            messages.error(request, _("You can only delete your own account."))
             return redirect('users_list')
 
         return super().dispatch(request, *args, **kwargs)
@@ -89,5 +89,5 @@ class UserDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
         try:
             return super().delete(request, *args, **kwargs)
         except IntegrityError:
-            messages.error(request, "Failed to delete user.")
+            messages.error(request, _("Failed to delete user."))
             return HttpResponseRedirect(reverse_lazy('users_list'))
