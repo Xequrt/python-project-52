@@ -351,8 +351,6 @@ msgid "Users"
 msgstr "Пользователи"
 
 #: task_manager/templates/base.html:38
-#, fuzzy
-#| msgid "Logout"
 msgctxt "menu_item"
 msgid "Logout"
 msgstr "Выход"
