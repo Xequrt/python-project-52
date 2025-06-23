@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-22 15:36+1000\n"
+"POT-Creation-Date: 2025-06-23 23:24+1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -106,7 +106,6 @@ msgstr "Обновить метку"
 #: task_manager/labels/templates/labels/label_update.html:16
 #: task_manager/statuses/templates/statuses/status_update.html:16
 #: task_manager/tasks/templates/tasks/tasks_update.html:16
-#: task_manager/users/templates/users/user_create.html:27
 msgid "Save"
 msgstr "Сохранить"
 
@@ -431,6 +430,10 @@ msgstr "Редактировать пользователя"
 msgid "Create User"
 msgstr "Создать пользователя"
 
+#: task_manager/users/templates/users/user_create.html:27
+msgid "Register"
+msgstr "Зарегистрировать"
+
 #: task_manager/users/templates/users/users_list.html:4
 #: task_manager/users/templates/users/users_list.html:8
 #, fuzzy
@@ -444,13 +447,13 @@ msgstr "Список пользователей"
 msgid "Full Name"
 msgstr "Полное имя"
 
-#: task_manager/users/views.py:84
+#: task_manager/users/views.py:83
 msgid "This user is currently assigned to tasks and cannot be deleted"
 msgstr ""
 "Этот пользователь в данный момент назначен для выполнения задач и не может "
 "быть удален"
 
-#: task_manager/users/views.py:88
+#: task_manager/users/views.py:87
 msgid "You cannot delete your own account"
 msgstr "Вы не можете удалить свою учетную запись"
 
