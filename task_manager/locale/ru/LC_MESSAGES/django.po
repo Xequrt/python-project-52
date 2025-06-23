@@ -474,7 +474,7 @@ msgstr ""
 
 #: task_manager/views.py:38
 msgid "You are logged out"
-msgstr "Вы вышли"
+msgstr "Вы разлогинены"
 
 #~ msgid "Login"
 #~ msgstr "Вход"
