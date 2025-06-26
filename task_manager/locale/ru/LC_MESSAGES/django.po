@@ -127,7 +127,7 @@ msgstr "Дата создания"
 #: task_manager/tasks/templates/tasks/tasks_list.html:59
 #: task_manager/users/templates/users/users_list.html:32
 msgid "Edit"
-msgstr "Редактировать"
+msgstr "Изменить"
 
 #: task_manager/labels/views.py:28
 msgid "Label created successfully!"
