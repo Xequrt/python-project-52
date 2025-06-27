@@ -24,7 +24,8 @@
         {% csrf_token %}
         {% bootstrap_form form %}
         <div class="buttons">
-            <button type="submit" class="btn btn-primary">{% translate "Register" %}</button>
+            <input class="btn btn-primary" type="submit"
+                value="{% if is_update %}{% trans 'Change' %}{% else %}{% trans 'Register' %}{% endif %}">
         </div>
     </form>
 </div>

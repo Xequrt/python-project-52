@@ -28,6 +28,10 @@ class UserCreateView(SuccessMessageMixin, CreateView):
     success_message = _("User created successfully!")
     login_url = reverse_lazy('login')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['is_update'] = False
+        return context
 
     def form_valid(self, form):
         try:
@@ -45,6 +49,11 @@ class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     success_url = reverse_lazy('users_list')
     success_message = "User updated successfully!"
     login_url = _url = reverse_lazy('login')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['is_update'] = True
+        return context
 
     def get_object(self, *args, **kwargs):
         return get_object_or_404(User, pk=self.kwargs.get('pk'))
