@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-28 00:35+1000\n"
+"POT-Creation-Date: 2025-06-28 01:08+1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,19 +55,17 @@ msgid "Delete Label"
 msgstr "Удалить метку"
 
 #: task_manager/labels/templates/labels/label_confirm_delete.html:11
-msgid "Are you sure you want to delete the label"
-msgstr "Вы точно хотите удалить метку?"
+#: task_manager/statuses/templates/statuses/status_confirm_delete.html:11
+#: task_manager/tasks/templates/tasks/tasks_confirm_delete.html:11
+#: task_manager/users/templates/users/user_confirm_delete.html:10
+msgid "Are you sure you want to delete"
+msgstr "Вы уверены, что хотите удалить"
 
 #: task_manager/labels/templates/labels/label_confirm_delete.html:16
-#: task_manager/labels/templates/labels/labels_list.html:30
 #: task_manager/statuses/templates/statuses/status_confirm_delete.html:16
-#: task_manager/statuses/templates/statuses/statuses_list.html:30
-#: task_manager/tasks/templates/tasks/task_view.html:48
 #: task_manager/tasks/templates/tasks/tasks_confirm_delete.html:16
-#: task_manager/tasks/templates/tasks/tasks_list.html:60
 #: task_manager/users/templates/users/user_confirm_delete.html:15
-#: task_manager/users/templates/users/users_list.html:33
-msgid "Delete"
+msgid "Yes, delete"
 msgstr "Да, удалить"
 
 #: task_manager/labels/templates/labels/label_confirm_delete.html:17
@@ -129,6 +127,14 @@ msgstr "Дата создания"
 msgid "Edit"
 msgstr "Изменить"
 
+#: task_manager/labels/templates/labels/labels_list.html:30
+#: task_manager/statuses/templates/statuses/statuses_list.html:30
+#: task_manager/tasks/templates/tasks/task_view.html:48
+#: task_manager/tasks/templates/tasks/tasks_list.html:60
+#: task_manager/users/templates/users/users_list.html:33
+msgid "Delete"
+msgstr "Удалить"
+
 #: task_manager/labels/views.py:28
 msgid "Label created successfully!"
 msgstr "Метка успешно создана"
@@ -173,11 +179,7 @@ msgstr "Статусы"
 #: task_manager/statuses/templates/statuses/status_confirm_delete.html:5
 #: task_manager/statuses/templates/statuses/status_confirm_delete.html:9
 msgid "Delete Status"
-msgstr "Удалить статус"
-
-#: task_manager/statuses/templates/statuses/status_confirm_delete.html:11
-msgid "Are you sure you want to delete the status"
-msgstr "Вы точно хотите удалить статус?"
+msgstr "Удаление статуса"
 
 #: task_manager/statuses/templates/statuses/status_create.html:5
 msgid "Create Status"
@@ -285,10 +287,6 @@ msgstr "Дата создания"
 #: task_manager/tasks/templates/tasks/tasks_confirm_delete.html:9
 msgid "Delete Task"
 msgstr "Удалить задачу"
-
-#: task_manager/tasks/templates/tasks/tasks_confirm_delete.html:11
-msgid "Are you sure you want to delete the task"
-msgstr "Вы точно хотите удалить задачу?"
 
 #: task_manager/tasks/templates/tasks/tasks_create.html:5
 msgid "Create Task"
@@ -411,13 +409,12 @@ msgid "Last name should contain only letters."
 msgstr "Фамилия должна состоять только из букв."
 
 #: task_manager/users/templates/users/user_confirm_delete.html:4
-#: task_manager/users/templates/users/user_confirm_delete.html:8
 msgid "Delete Confirmation"
 msgstr "Подтверждение удаления"
 
-#: task_manager/users/templates/users/user_confirm_delete.html:10
-msgid "Are you sure you want to delete this user?"
-msgstr "Вы точно хотите удалить этого пользователя?"
+#: task_manager/users/templates/users/user_confirm_delete.html:8
+msgid "Delete User"
+msgstr "Удаление пользователя"
 
 #: task_manager/users/templates/users/user_create.html:7
 #: task_manager/users/templates/users/user_create.html:17
@@ -504,6 +501,18 @@ msgstr ""
 #: task_manager/views.py:38
 msgid "You are logged out"
 msgstr "Вы разлогинены"
+
+#~ msgid "Are you sure you want to delete the label"
+#~ msgstr "Вы точно хотите удалить метку?"
+
+#~ msgid "Are you sure you want to delete the status"
+#~ msgstr "Вы точно хотите удалить статус?"
+
+#~ msgid "Are you sure you want to delete the task"
+#~ msgstr "Вы точно хотите удалить задачу?"
+
+#~ msgid "Are you sure you want to delete this user?"
+#~ msgstr "Вы точно хотите удалить этого пользователя?"
 
 #~ msgid "Login"
 #~ msgstr "Вход"

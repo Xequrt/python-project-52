@@ -8,12 +8,12 @@
 <div class="container mt-4">
     <h1>{% translate "Delete Label" %}</h1>
 
-    <p>{% translate "Are you sure you want to delete the label" %} "{{ object.name }}"?</p>
+    <p>{% translate "Are you sure you want to delete" %} "{{ object.name }}"?</p>
 
     <form method="post">
         {% csrf_token %}
         <div class="text-end">
-            <button type="submit" class="btn btn-danger">{% translate "Delete" %}</button>
+            <button type="submit" class="btn btn-danger">{% translate "Yes, delete" %}</button>
             <a href="{% url 'labels_list' %}" class="btn btn-secondary">{% translate "Cancel" %}</a>
         </div>
     </form>
