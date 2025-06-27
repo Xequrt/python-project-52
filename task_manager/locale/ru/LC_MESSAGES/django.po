@@ -68,7 +68,7 @@ msgstr "Вы точно хотите удалить метку?"
 #: task_manager/users/templates/users/user_confirm_delete.html:15
 #: task_manager/users/templates/users/users_list.html:33
 msgid "Delete"
-msgstr "Удалить"
+msgstr "Да, удалить"
 
 #: task_manager/labels/templates/labels/label_confirm_delete.html:17
 #: task_manager/labels/templates/labels/label_create.html:17
