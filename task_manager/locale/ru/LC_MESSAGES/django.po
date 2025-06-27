@@ -436,14 +436,10 @@ msgstr "Зарегистрировать"
 
 #: task_manager/users/templates/users/users_list.html:4
 #: task_manager/users/templates/users/users_list.html:8
-#, fuzzy
-#| msgid "Users"
 msgid "Users List"
 msgstr "Список пользователей"
 
 #: task_manager/users/templates/users/users_list.html:19
-#, fuzzy
-#| msgid "First Name"
 msgid "Full Name"
 msgstr "Полное имя"
 
