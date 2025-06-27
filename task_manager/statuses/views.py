@@ -64,7 +64,7 @@ class StatusesDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Status
     template_name = 'statuses/status_confirm_delete.html'
     success_url = reverse_lazy('statuses_list')
-    success_message = "Status deleted successfully!"
+    success_message = _("Status deleted successfully!")
     login_url = reverse_lazy('login')
 
     def get_object(self, queryset=None):
