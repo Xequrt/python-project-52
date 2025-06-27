@@ -142,7 +142,7 @@ msgstr "Метка успешно создана"
 
 #: task_manager/labels/views.py:47
 msgid "Label updated successfully!"
-msgstr "Метка успешно обновлена"
+msgstr "Метка успешно изменена"
 
 #: task_manager/labels/views.py:57
 msgid "You can only update your own label"
@@ -210,7 +210,7 @@ msgstr "Статус успешно создан"
 
 #: task_manager/statuses/views.py:46
 msgid "Status updated successfully!"
-msgstr "Статус успешно обновлен"
+msgstr "Статус успешно изменен"
 
 #: task_manager/statuses/views.py:76
 msgid "This status is currently in use and cannot be deleted"
@@ -321,7 +321,7 @@ msgstr "Создание задачи успешно"
 
 #: task_manager/tasks/views.py:55
 msgid "Task updated successfully!"
-msgstr "Успешное обновление задачи"
+msgstr "Задача успешно изменена"
 
 #: task_manager/tasks/views.py:65
 msgid "You can only update your own task"
