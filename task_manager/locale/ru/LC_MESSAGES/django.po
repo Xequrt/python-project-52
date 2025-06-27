@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-28 01:08+1000\n"
+"POT-Creation-Date: 2025-06-28 01:15+1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -104,8 +104,9 @@ msgstr "Обновить метку"
 #: task_manager/labels/templates/labels/label_update.html:16
 #: task_manager/statuses/templates/statuses/status_update.html:16
 #: task_manager/tasks/templates/tasks/tasks_update.html:16
-msgid "Save"
-msgstr "Сохранить"
+#: task_manager/users/templates/users/user_create.html:28
+msgid "Change"
+msgstr "Изменить"
 
 #: task_manager/labels/templates/labels/labels_list.html:4
 #: task_manager/labels/templates/labels/labels_list.html:8
@@ -428,10 +429,6 @@ msgid "Create User"
 msgstr "Создать пользователя"
 
 #: task_manager/users/templates/users/user_create.html:28
-msgid "Change"
-msgstr "Изменить"
-
-#: task_manager/users/templates/users/user_create.html:28
 msgid "Register"
 msgstr "Зарегистрировать"
 
@@ -501,6 +498,9 @@ msgstr ""
 #: task_manager/views.py:38
 msgid "You are logged out"
 msgstr "Вы разлогинены"
+
+#~ msgid "Save"
+#~ msgstr "Сохранить"
 
 #~ msgid "Are you sure you want to delete the label"
 #~ msgstr "Вы точно хотите удалить метку?"
