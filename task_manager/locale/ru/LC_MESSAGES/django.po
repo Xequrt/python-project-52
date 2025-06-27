@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-23 23:35+1000\n"
+"POT-Creation-Date: 2025-06-28 00:35+1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -430,7 +430,11 @@ msgstr "Редактировать пользователя"
 msgid "Create User"
 msgstr "Создать пользователя"
 
-#: task_manager/users/templates/users/user_create.html:27
+#: task_manager/users/templates/users/user_create.html:28
+msgid "Change"
+msgstr "Изменить"
+
+#: task_manager/users/templates/users/user_create.html:28
 msgid "Register"
 msgstr "Зарегистрировать"
 
@@ -447,39 +451,37 @@ msgstr "Полное имя"
 msgid "User created successfully!"
 msgstr "Пользователь успешно зарегистрирован"
 
-#: task_manager/users/views.py:37
-#, fuzzy
-#| msgid "Task with this name already exists"
+#: task_manager/users/views.py:41
 msgid "User with this username already exists."
 msgstr "Пользователь с таким именем уже существует"
 
-#: task_manager/users/views.py:56
+#: task_manager/users/views.py:50
+msgid "User updated successfully!"
+msgstr "Пользователь успешно изменен"
+
+#: task_manager/users/views.py:65
 msgid "You do not have permission to modify another user."
 msgstr "У вас нет прав для изменения другого пользователя"
 
-#: task_manager/users/views.py:66
+#: task_manager/users/views.py:75
 msgid "User deleted successfully!"
 msgstr "Пользователь успешно удален"
 
-#: task_manager/users/views.py:76
-#, fuzzy
-#| msgid "You cannot delete your own account"
+#: task_manager/users/views.py:85
 msgid "You can only delete your own account."
 msgstr "Вы не можете удалить свою учетную запись"
 
-#: task_manager/users/views.py:83
+#: task_manager/users/views.py:92
 msgid "This user is currently assigned to tasks and cannot be deleted"
 msgstr ""
 "Этот пользователь в данный момент назначен для выполнения задач и не может "
 "быть удален"
 
-#: task_manager/users/views.py:87
+#: task_manager/users/views.py:96
 msgid "You cannot delete your own account"
 msgstr "Вы не можете удалить свою учетную запись"
 
-#: task_manager/users/views.py:92
-#, fuzzy
-#| msgid "Failed to delete status."
+#: task_manager/users/views.py:101
 msgid "Failed to delete user."
 msgstr "Невозможно удалить статус, потому что он используется"
 

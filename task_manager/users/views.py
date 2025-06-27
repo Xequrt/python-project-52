@@ -47,7 +47,7 @@ class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     form_class = CustomUserForm
     template_name = 'users/user_create.html'
     success_url = reverse_lazy('users_list')
-    success_message = "User updated successfully!"
+    success_message = _("User updated successfully!")
     login_url = _url = reverse_lazy('login')
 
     def get_context_data(self, **kwargs):
