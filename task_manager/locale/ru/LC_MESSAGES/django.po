@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-29 01:14+1000\n"
+"POT-Creation-Date: 2025-06-29 01:22+1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,7 +38,7 @@ msgstr "Метка с этим именем уже используется"
 msgid "Unique label name"
 msgstr "Уникальное имя метки"
 
-#: task_manager/labels/models.py:18 task_manager/tasks/models.py:54
+#: task_manager/labels/models.py:18 task_manager/tasks/models.py:55
 #: task_manager/tasks/templates/tasks/tasks_list.html:24
 msgid "Label"
 msgstr "Метка"
@@ -158,7 +158,7 @@ msgid "Status with this name already exists"
 msgstr "Статус с этим именем уже существует"
 
 #: task_manager/statuses/models.py:14 task_manager/tasks/filter.py:12
-#: task_manager/tasks/models.py:47
+#: task_manager/tasks/models.py:48
 #: task_manager/tasks/templates/tasks/task_view.html:29
 #: task_manager/tasks/templates/tasks/tasks_list.html:16
 #: task_manager/tasks/templates/tasks/tasks_list.html:39
@@ -216,7 +216,7 @@ msgstr "Статус в настоящее время используется �
 msgid "Failed to delete status."
 msgstr "Не удалось удалить статус"
 
-#: task_manager/tasks/filter.py:17 task_manager/tasks/models.py:32
+#: task_manager/tasks/filter.py:17 task_manager/tasks/models.py:33
 #: task_manager/tasks/templates/tasks/task_view.html:25
 #: task_manager/tasks/templates/tasks/tasks_list.html:20
 #: task_manager/tasks/templates/tasks/tasks_list.html:41
@@ -237,37 +237,41 @@ msgstr "Уникальное имя задачи"
 msgid "Task with this name already exists"
 msgstr "Задача с таким именем уже существует"
 
-#: task_manager/tasks/models.py:23
+#: task_manager/tasks/models.py:21
+msgid "Description"
+msgstr "Описание"
+
+#: task_manager/tasks/models.py:24
 msgid "Detailed task description"
 msgstr "Подробное описание задачи"
 
-#: task_manager/tasks/models.py:33
+#: task_manager/tasks/models.py:34
 msgid "User responsible for the task"
 msgstr "Пользователь, ответственный за выполнение задачи"
 
-#: task_manager/tasks/models.py:40
+#: task_manager/tasks/models.py:41
 #: task_manager/tasks/templates/tasks/task_view.html:21
 #: task_manager/tasks/templates/tasks/tasks_list.html:40
 msgid "Author"
 msgstr "Автор"
 
-#: task_manager/tasks/models.py:41
+#: task_manager/tasks/models.py:42
 msgid "User who created the task"
 msgstr "Пользователь, кто создал задачу"
 
-#: task_manager/tasks/models.py:48
+#: task_manager/tasks/models.py:49
 msgid "Current task status"
 msgstr "Текущее состояние задачи"
 
-#: task_manager/tasks/models.py:55
+#: task_manager/tasks/models.py:56
 msgid "Current task label"
 msgstr "Метка текущей задачи"
 
-#: task_manager/tasks/models.py:61
+#: task_manager/tasks/models.py:62
 msgid "Task"
 msgstr "Задача"
 
-#: task_manager/tasks/models.py:62 task_manager/templates/base.html:29
+#: task_manager/tasks/models.py:63 task_manager/templates/base.html:29
 msgid "Tasks"
 msgstr "Задачи"
 

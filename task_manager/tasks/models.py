@@ -18,6 +18,7 @@ class Task(models.Model):
 
     )
     description = models.TextField(
+        _('Description'),
         blank=True,
         max_length=500,
         help_text=_('Detailed task description')
