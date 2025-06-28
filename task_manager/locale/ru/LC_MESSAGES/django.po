@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-28 01:24+1000\n"
+"POT-Creation-Date: 2025-06-29 01:07+1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -144,21 +144,9 @@ msgstr "Метка успешно создана"
 msgid "Label updated successfully!"
 msgstr "Метка успешно изменена"
 
-#: task_manager/labels/views.py:57
-msgid "You can only update your own label"
-msgstr "Вы можете обновить только свою метку"
-
-#: task_manager/labels/views.py:84
-msgid "You can only delete your own label"
-msgstr "Вы можете удалить только свою метку"
-
-#: task_manager/labels/views.py:90
-msgid "This label is currently in use and cannot be deleted"
-msgstr "Эта метка используется в настоящее время и не может быть удалена"
-
-#: task_manager/labels/views.py:96
-msgid "Failed to delete label"
-msgstr "Не удалось удалить метку"
+#: task_manager/labels/views.py:92
+msgid "Cannot delete label because it is in use"
+msgstr "Невозможно удалить метку, потому что она используется"
 
 #: task_manager/statuses/forms.py:21 task_manager/statuses/views.py:37
 #: task_manager/statuses/views.py:59
@@ -502,6 +490,18 @@ msgstr ""
 #: task_manager/views.py:38
 msgid "You are logged out"
 msgstr "Вы разлогинены"
+
+#~ msgid "You can only update your own label"
+#~ msgstr "Вы можете обновить только свою метку"
+
+#~ msgid "You can only delete your own label"
+#~ msgstr "Вы можете удалить только свою метку"
+
+#~ msgid "This label is currently in use and cannot be deleted"
+#~ msgstr "Эта метка используется в настоящее время и не может быть удалена"
+
+#~ msgid "Failed to delete label"
+#~ msgstr "Не удалось удалить метку"
 
 #~ msgid "Save"
 #~ msgstr "Сохранить"

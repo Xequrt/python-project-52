@@ -50,13 +50,13 @@ class LabelsUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     def get_object(self, *args, **kwargs):
         return get_object_or_404(Label, pk=self.kwargs.get('pk'))
 
-    def dispatch(self, request, *args, **kwargs):
-        obj = self.get_object()
-
-        if not request.user.is_superuser and obj != request.user:
-            messages.error(request, _("You can only update your own label"))
-            return redirect('labels_list')
-        return super().dispatch(request, *args, **kwargs)
+    # def dispatch(self, request, *args, **kwargs):
+    #     obj = self.get_object()
+    #
+    #     if not request.user.is_superuser and obj.task.user != request.user:
+    #         messages.error(request, _("You can only update your own label"))
+    #         return redirect('labels_list')
+    #     return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
         try:
@@ -77,21 +77,18 @@ class LabelsDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     def get_object(self, queryset=None):
         return get_object_or_404(Label, pk=self.kwargs.get('pk'))
 
-    def dispatch(self, request, *args, **kwargs):
-        obj = self.get_object()
+    # def dispatch(self, request, *args, **kwargs):
+    #     obj = self.get_object()
+    #
+    #     if not request.user.is_superuser and obj.user != request.user:
+    #         messages.error(request, _("You can only delete your own label"))
+    #         return redirect('labels_list')
+    #     return super().dispatch(request, *args, **kwargs)
 
-        if not request.user.is_superuser and obj != request.user:
-            messages.error(request, _("You can only delete your own label"))
-            return redirect('labels_list')
-        return super().dispatch(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        if self.object.task_set.exists():
-            messages.warning(self.request, _("This label is currently in use and cannot be deleted"))
-            return HttpResponseRedirect(self.get_success_url())
-
-        try:
-            return super().delete(request, *args, **kwargs)
-        except IntegrityError:
-            messages.error(self.request, _("Failed to delete label"))
-            return render(self.request, self.template_name, self.get_context_data())
+    def form_valid(self, form):
+        label = self.get_object()
+        if label.task_set.exists():
+            messages.error(self.request,
+                           _('Cannot delete label because it is in use'))
+            return redirect(self.success_url)
+        return super().form_valid(form)
