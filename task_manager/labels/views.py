@@ -71,7 +71,7 @@ class LabelsDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Label
     template_name = 'labels/label_confirm_delete.html'
     success_url = reverse_lazy('labels_list')
-    success_message = "Label deleted successfully!"
+    success_message = _("Label deleted successfully!")
     login_url = reverse_lazy('login')
 
     def get_object(self, queryset=None):
