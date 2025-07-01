@@ -16,6 +16,7 @@ class LabelsListView(LoginRequiredMixin, ListView):
     template_name = 'labels/labels_list.html'
     context_object_name = 'labels'
     login_url = reverse_lazy('login')
+    ordering = ['id']
 
     def get_queryset(self):
         return super().get_queryset().order_by('name')
