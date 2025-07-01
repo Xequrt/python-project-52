@@ -1,6 +1,6 @@
 import django_filters
 from django import forms
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
 from .models import Task
 from task_manager.labels.models import Label
@@ -13,7 +13,7 @@ class TaskFilter(django_filters.FilterSet):
         widget = forms.Select(attrs={'class': 'form-select'})
     )
     executor = django_filters.ModelChoiceFilter(
-        queryset=User.objects.all(),
+        queryset=get_user_model().objects.all(),
         label=_('Executor'),
         widget=forms.Select(attrs={'class': 'form-select'}),
     )

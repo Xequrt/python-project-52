@@ -1,6 +1,6 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -13,7 +13,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 class UserListView(ListView):
-    model = User
+    model = get_user_model()
     template_name = 'users/users_list.html'
     context_object_name = 'users'
 
@@ -43,7 +43,7 @@ class UserCreateView(SuccessMessageMixin, CreateView):
 
 
 class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
-    model = User
+    model = get_user_model()
     form_class = CustomUserForm
     template_name = 'users/user_create.html'
     success_url = reverse_lazy('users_list')
@@ -56,7 +56,7 @@ class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         return context
 
     def get_object(self, *args, **kwargs):
-        return get_object_or_404(User, pk=self.kwargs.get('pk'))
+        return get_object_or_404(get_user_model(), pk=self.kwargs.get('pk'))
 
     def dispatch(self, request, *args, **kwargs):
         obj = self.get_object()
@@ -69,14 +69,14 @@ class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 
 
 class UserDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
-    model = User
+    model = get_user_model()
     template_name = 'users/user_confirm_delete.html'
     success_url = reverse_lazy('users_list')
     success_message = _("User deleted successfully!")
     login_url = _url = reverse_lazy('login')
 
     def get_object(self, queryset=None):
-        return get_object_or_404(User, pk=self.kwargs.get('pk'))
+        return get_object_or_404(get_user_model(), pk=self.kwargs.get('pk'))
 
     def dispatch(self, request, *args, **kwargs):
         obj = self.get_object()

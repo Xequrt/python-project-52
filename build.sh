@@ -9,7 +9,7 @@ make compilemessages
 make install && make collectstatic && make migrate
 
 SUPERUSER_EXISTS=$(python3 manage.py shell -c \
-"from django.contrib.auth.models import User; \
+"from django.contrib.auth import get_user_model(); \
 print(User.objects.filter(username='$DJANGO_SUPERUSER_USERNAME').exists())")
 
 if [ "$SUPERUSER_EXISTS" = "False" ]; then
