@@ -5,6 +5,7 @@ class Label(models.Model):
     name = models.CharField(
         _('Name'),
         max_length=100,
+        blank=False,
         unique=True,
         help_text=_('Unique label name'),
         error_messages={
@@ -17,7 +18,7 @@ class Label(models.Model):
     class Meta:
         verbose_name = _('Label')
         verbose_name_plural = _('Labels')
-        ordering = ['name']
+        ordering = ['id']
 
     def __str__(self):
         return self.name
