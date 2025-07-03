@@ -226,7 +226,7 @@ msgstr "Исполнитель"
 #: task_manager/tasks/filter.py:27
 #: task_manager/tasks/templates/tasks/tasks_list.html:29
 msgid "Your tasks"
-msgstr "Ваши задачи"
+msgstr "Только свои задачи"
 
 #: task_manager/tasks/models.py:14
 msgid "Unique task name"
