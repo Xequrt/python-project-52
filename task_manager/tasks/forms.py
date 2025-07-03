@@ -8,7 +8,8 @@ class TaskForm(forms.ModelForm):
         widgets = {
             'executor': forms.Select(attrs={'class': 'form-control bg-secondary bg-opacity-50 border-secondary'}),
             'status': forms.Select(attrs={'class': 'form-select bg-secondary bg-opacity-50 border-secondary'}),
-            'labels': forms.CheckboxSelectMultiple(attrs={
-            'class': 'form-check-input'
+            'labels': forms.SelectMultiple(attrs={
+                'class': 'form-select bg-secondary bg-opacity-50 border-secondary',
+                'multiple': True
             }),
         }
