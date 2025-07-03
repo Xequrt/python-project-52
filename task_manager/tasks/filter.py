@@ -19,7 +19,7 @@ class TaskFilter(django_filters.FilterSet):
     )
     labels = django_filters.ModelChoiceFilter(
         queryset=Label.objects.all(),
-        label=_('Labels'),
+        label=_('Label'),
         widget=forms.Select(attrs={'class': 'form-select'}),
     )
     is_author = django_filters.BooleanFilter(

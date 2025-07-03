@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-29 01:22+1000\n"
+"POT-Creation-Date: 2025-07-04 00:53+1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: task_manager/labels/forms.py:12 task_manager/labels/models.py:6
+#: task_manager/labels/forms.py:12 task_manager/labels/models.py:8
 #: task_manager/labels/templates/labels/labels_list.html:18
 #: task_manager/statuses/forms.py:12 task_manager/statuses/models.py:7
 #: task_manager/statuses/templates/statuses/statuses_list.html:18
@@ -29,22 +29,28 @@ msgstr ""
 msgid "Name"
 msgstr "Имя"
 
-#: task_manager/labels/forms.py:21 task_manager/labels/models.py:11
-#: task_manager/labels/views.py:38 task_manager/labels/views.py:66
+#: task_manager/labels/forms.py:21 task_manager/labels/models.py:14
+#: task_manager/labels/views.py:39 task_manager/labels/views.py:67
 msgid "Label with this name already exists"
 msgstr "Метка с этим именем уже используется"
 
-#: task_manager/labels/models.py:9
+#: task_manager/labels/models.py:12
 msgid "Unique label name"
 msgstr "Уникальное имя метки"
 
-#: task_manager/labels/models.py:18 task_manager/tasks/models.py:55
-#: task_manager/tasks/templates/tasks/tasks_list.html:24
-msgid "Label"
-msgstr "Метки"
+#: task_manager/labels/models.py:24
+#, fuzzy
+#| msgid "Cannot delete label because it is in use"
+msgid "Cannot delete this label because they are being used"
+msgstr "Невозможно удалить метку, потому что она используется"
 
-#: task_manager/labels/models.py:19 task_manager/tasks/filter.py:22
+#: task_manager/labels/models.py:33 task_manager/tasks/filter.py:22
+msgid "Label"
+msgstr "Метка"
+
+#: task_manager/labels/models.py:34 task_manager/tasks/models.py:55
 #: task_manager/tasks/templates/tasks/task_view.html:38
+#: task_manager/tasks/templates/tasks/tasks_list.html:24
 #: task_manager/templates/base.html:30
 msgid "Labels"
 msgstr "Метки"
@@ -111,7 +117,7 @@ msgstr "Изменить"
 #: task_manager/labels/templates/labels/labels_list.html:4
 #: task_manager/labels/templates/labels/labels_list.html:8
 msgid "Label List"
-msgstr "Список меток"
+msgstr "Метки"
 
 #: task_manager/labels/templates/labels/labels_list.html:19
 #: task_manager/statuses/templates/statuses/statuses_list.html:19
@@ -136,19 +142,19 @@ msgstr "Изменить"
 msgid "Delete"
 msgstr "Удалить"
 
-#: task_manager/labels/views.py:28
+#: task_manager/labels/views.py:29
 msgid "Label created successfully!"
 msgstr "Метка успешно создана"
 
-#: task_manager/labels/views.py:47
+#: task_manager/labels/views.py:48
 msgid "Label updated successfully!"
 msgstr "Метка успешно изменена"
 
-#: task_manager/labels/views.py:74
+#: task_manager/labels/views.py:75
 msgid "Label deleted successfully!"
 msgstr "Метка успешно удалена"
 
-#: task_manager/labels/views.py:92
+#: task_manager/labels/views.py:93
 msgid "Cannot delete label because it is in use"
 msgstr "Невозможно удалить метку, потому что она используется"
 
@@ -409,6 +415,14 @@ msgstr "Имя должно состоять только из букв."
 msgid "Last name should contain only letters."
 msgstr "Фамилия должна состоять только из букв."
 
+#: task_manager/users/models.py:10
+msgid "First Name"
+msgstr "Имя"
+
+#: task_manager/users/models.py:15
+msgid "Last Name"
+msgstr "Фамилия"
+
 #: task_manager/users/templates/users/user_confirm_delete.html:4
 msgid "Delete Confirmation"
 msgstr "Подтверждение удаления"
@@ -537,9 +551,6 @@ msgstr "Вы разлогинены"
 
 #~ msgid "Email already exists."
 #~ msgstr "Электронная почта уже используется."
-
-#~ msgid "Last Name"
-#~ msgstr "Фамилия"
 
 #~ msgid "Actions"
 #~ msgstr "Действия"
