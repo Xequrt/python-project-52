@@ -6,10 +6,10 @@ class TaskForm(forms.ModelForm):
         model = Task
         fields = ['name', 'description', 'executor', 'status', 'labels']
         widgets = {
-            'executor': forms.Select(attrs={'class': 'form-control bg-secondary bg-opacity-50 border-secondary'}),
-            'status': forms.Select(attrs={'class': 'form-select bg-secondary bg-opacity-50 border-secondary'}),
+            'executor': forms.Select(attrs={'class': 'form-control'}),
+            'status': forms.Select(attrs={'class': 'form-select'}),
             'labels': forms.SelectMultiple(attrs={
-                'class': 'form-select bg-secondary bg-opacity-50 border-secondary',
+                'class': 'form-select',
                 'multiple': True
             }),
         }
