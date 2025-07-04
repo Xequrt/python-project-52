@@ -117,7 +117,7 @@ msgstr "Изменить"
 #: task_manager/labels/templates/labels/labels_list.html:4
 #: task_manager/labels/templates/labels/labels_list.html:8
 msgid "Label List"
-msgstr "Метки"
+msgstr "Список меток"
 
 #: task_manager/labels/templates/labels/labels_list.html:19
 #: task_manager/statuses/templates/statuses/statuses_list.html:19
