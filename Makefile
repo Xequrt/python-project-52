@@ -11,6 +11,9 @@ collectstatic:
 compilemessages:
 	uv run django-admin compilemessages
 
+makemessages:
+	uv run django-admin makemessages -l ru
+
 migrate:
 	uv run python3 manage.py migrate
 

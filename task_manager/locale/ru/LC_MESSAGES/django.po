@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-05 00:01+1000\n"
+"POT-Creation-Date: 2025-07-05 00:29+1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -459,41 +459,39 @@ msgstr "Список пользователей"
 msgid "Full Name"
 msgstr "Полное имя"
 
-#: task_manager/users/views.py:28
+#: task_manager/users/views.py:29
 msgid "User created successfully!"
 msgstr "Пользователь успешно зарегистрирован"
 
-#: task_manager/users/views.py:41
+#: task_manager/users/views.py:42
 msgid "User with this username already exists."
 msgstr "Пользователь с таким именем уже существует"
 
-#: task_manager/users/views.py:50
+#: task_manager/users/views.py:51
 msgid "User updated successfully!"
 msgstr "Пользователь успешно изменен"
 
-#: task_manager/users/views.py:65
+#: task_manager/users/views.py:66
 msgid "You do not have permission to modify another user."
 msgstr "У вас нет прав для изменения другого пользователя"
 
-#: task_manager/users/views.py:75
+#: task_manager/users/views.py:76
 msgid "User deleted successfully!"
 msgstr "Пользователь успешно удален"
 
-#: task_manager/users/views.py:85
+#: task_manager/users/views.py:86
 msgid "You can only delete your own account."
 msgstr "Вы не можете удалить свою учетную запись"
 
-#: task_manager/users/views.py:92
+#: task_manager/users/views.py:93 task_manager/users/views.py:102
 msgid "This user is currently assigned to tasks and cannot be deleted"
-msgstr ""
-"Этот пользователь в данный момент назначен для выполнения задач и не может "
-"быть удален"
+msgstr "У вас нет прав для изменения"
 
-#: task_manager/users/views.py:96
+#: task_manager/users/views.py:97
 msgid "You cannot delete your own account"
 msgstr "Вы не можете удалить свою учетную запись"
 
-#: task_manager/users/views.py:101
+#: task_manager/users/views.py:105
 msgid "Failed to delete user."
 msgstr "Невозможно удалить статус, потому что он используется"
 
