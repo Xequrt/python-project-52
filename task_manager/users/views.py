@@ -83,7 +83,7 @@ class UserDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
         obj = self.get_object()
 
         if not request.user.is_superuser and obj != request.user:
-            messages.error(request, _("You can only delete your own account."))
+            messages.error(request, _("You do not have permission to delete another user."))
             return redirect('users_list')
 
         return super().dispatch(request, *args, **kwargs)

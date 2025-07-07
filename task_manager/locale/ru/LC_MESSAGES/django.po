@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-05 00:29+1000\n"
+"POT-Creation-Date: 2025-07-08 00:31+1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -480,8 +480,8 @@ msgid "User deleted successfully!"
 msgstr "Пользователь успешно удален"
 
 #: task_manager/users/views.py:86
-msgid "You can only delete your own account."
-msgstr "Вы не можете удалить свою учетную запись"
+msgid "You do not have permission to delete another user."
+msgstr "У вас нет прав для удаления другого пользователя"
 
 #: task_manager/users/views.py:93 task_manager/users/views.py:102
 msgid "This user is currently assigned to tasks and cannot be deleted"
@@ -514,6 +514,9 @@ msgstr ""
 #: task_manager/views.py:38
 msgid "You are logged out"
 msgstr "Вы разлогинены"
+
+#~ msgid "You can only delete your own account."
+#~ msgstr "Вы не можете удалить свою учетную запись"
 
 #~ msgid "You can only update your own label"
 #~ msgstr "Вы можете обновить только свою метку"
