@@ -3,7 +3,6 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth import get_user_model
 from django.contrib.messages.views import SuccessMessageMixin
-from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.db import IntegrityError
@@ -92,14 +91,14 @@ class UserDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
         self.object = self.get_object()
         if self.object.created_tasks.exists() or self.object.executor_tasks.exists():
             messages.error(request, _("This user is currently assigned to tasks and cannot be deleted"))
-            return HttpResponseRedirect(self.get_success_url())
+            return redirect(self.get_success_url())
 
         try:
             messages.success(request, self.success_message)
             return super().delete(request, *args, **kwargs)
         except ProtectedError:
             messages.error(request, _("This user is currently assigned to tasks and cannot be deleted"))
-            return HttpResponseRedirect(self.get_success_url())
+            return redirect(self.get_success_url())
 
     # def delete(self, request, *args, **kwargs):
     #     if self.object.created_tasks.exists() or self.object.executor_tasks.exists():
