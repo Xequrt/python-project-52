@@ -88,19 +88,32 @@ class UserDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
 
         return super().dispatch(request, *args, **kwargs)
 
-    def delete(self, request, *args, **kwargs):
-        if self.object.task_set.exists():
-            messages.warning(request, _("This user is currently assigned to tasks and cannot be deleted"))
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        if self.object.created_tasks.exists() or self.object.executor_tasks.exists():
+            messages.error(request, _("This user is currently assigned to tasks and cannot be deleted"))
             return HttpResponseRedirect(self.get_success_url())
 
         if self.object == request.user:
             messages.warning(request, _("You cannot delete your own account"))
             return HttpResponseRedirect(self.get_success_url())
+
         try:
             return super().delete(request, *args, **kwargs)
         except ProtectedError:
             messages.error(request, _("This user is currently assigned to tasks and cannot be deleted"))
             return HttpResponseRedirect(self.get_success_url())
-        except IntegrityError:
-            messages.error(request, _("Failed to delete user."))
-            return HttpResponseRedirect(reverse_lazy('users_list'))
+
+    # def delete(self, request, *args, **kwargs):
+    #     if self.object.created_tasks.exists() or self.object.executor_tasks.exists():
+    #         messages.error(request, _("This user is currently assigned to tasks and cannot be deleted"))
+    #         return HttpResponseRedirect(self.get_success_url())
+    #
+    #     if self.object == request.user:
+    #         messages.warning(request, _("You cannot delete your own account"))
+    #         return HttpResponseRedirect(self.get_success_url())
+    #     # try:
+        #     return super().delete(request, *args, **kwargs)
+        # except IntegrityError:
+        #     messages.error(request, _("Failed to delete user."))
+        #     return HttpResponseRedirect(reverse_lazy('users_list'))
