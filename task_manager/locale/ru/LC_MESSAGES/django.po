@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-08 21:48+1000\n"
+"POT-Creation-Date: 2025-07-08 22:25+1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -473,7 +473,7 @@ msgstr "Пользователь успешно изменен"
 
 #: task_manager/users/views.py:66
 msgid "You do not have permission to modify another user."
-msgstr "У вас нет прав для изменения другого пользователя"
+msgstr "У вас нет прав для изменения"
 
 #: task_manager/users/views.py:76
 msgid "User deleted successfully!"
@@ -483,13 +483,9 @@ msgstr "Пользователь успешно удален"
 msgid "You do not have permission to delete another user."
 msgstr "У вас нет прав для удаления другого пользователя"
 
-#: task_manager/users/views.py:94 task_manager/users/views.py:104
+#: task_manager/users/views.py:94 task_manager/users/views.py:101
 msgid "This user is currently assigned to tasks and cannot be deleted"
 msgstr "У вас нет прав для изменения"
-
-#: task_manager/users/views.py:98
-msgid "You cannot delete your own account"
-msgstr "Вы не можете удалить свою учетную запись"
 
 #: task_manager/views.py:18
 msgid "You are logged in"
@@ -510,6 +506,9 @@ msgstr ""
 #: task_manager/views.py:38
 msgid "You are logged out"
 msgstr "Вы разлогинены"
+
+#~ msgid "You cannot delete your own account"
+#~ msgstr "Вы не можете удалить свою учетную запись"
 
 #~ msgid "Failed to delete user."
 #~ msgstr "Невозможно удалить статус, потому что он используется"
