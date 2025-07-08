@@ -94,10 +94,6 @@ class UserDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
             messages.error(request, _("This user is currently assigned to tasks and cannot be deleted"))
             return HttpResponseRedirect(self.get_success_url())
 
-        if self.object == request.user:
-            messages.warning(request, _("You cannot delete your own account"))
-            return HttpResponseRedirect(self.get_success_url())
-
         try:
             messages.success(request, self.success_message)
             return super().delete(request, *args, **kwargs)
