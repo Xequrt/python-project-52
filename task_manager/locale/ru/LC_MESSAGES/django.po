@@ -485,7 +485,7 @@ msgstr "У вас нет прав для удаления другого пол�
 
 #: task_manager/users/views.py:94 task_manager/users/views.py:104
 msgid "This user is currently assigned to tasks and cannot be deleted"
-msgstr "Невозможно удалить пользователя, потому что он используется"
+msgstr "У вас нет прав для изменения"
 
 #: task_manager/users/views.py:98
 msgid "You cannot delete your own account"
