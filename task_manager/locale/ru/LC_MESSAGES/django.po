@@ -481,7 +481,7 @@ msgstr "Пользователь успешно удален"
 
 #: task_manager/users/views.py:86
 msgid "You do not have permission to delete another user."
-msgstr "У вас нет прав для удаления другого пользователя"
+msgstr "У вас нет прав для изменения"
 
 #: task_manager/users/views.py:94 task_manager/users/views.py:101
 msgid "This user is currently assigned to tasks and cannot be deleted"
