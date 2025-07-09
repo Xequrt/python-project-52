@@ -1,4 +1,5 @@
-from django.http import HttpResponseRedirect
+from django.db.models import ProtectedError
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -70,14 +71,26 @@ class StatusesDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     def get_object(self, queryset=None):
         return get_object_or_404(Status, pk=self.kwargs.get('pk'))
 
-
-    def delete(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
         if self.object.task_set.exists():
-            messages.warning(self.request, _("This status is currently in use and cannot be deleted"))
-            return HttpResponseRedirect(self.get_success_url())
+            messages.error(request, _("This status is currently in use and cannot be deleted"))
+            return redirect(self.get_success_url())
 
         try:
+            messages.success(request, self.success_message)
             return super().delete(request, *args, **kwargs)
-        except IntegrityError:
-            messages.error(self.request, _("Failed to delete status."))
-            return render(self.request, self.template_name, self.get_context_data())
+        except ProtectedError:
+            messages.error(request, _("This status is currently in use and cannot be deleted"))
+            return redirect(self.get_success_url())
+
+    # def delete(self, request, *args, **kwargs):
+    #     if self.object.task_set.exists():
+    #         messages.warning(self.request, _("This status is currently in use and cannot be deleted"))
+    #         return HttpResponseRedirect(self.get_success_url())
+    #
+    #     try:
+    #         return super().delete(request, *args, **kwargs)
+    #     except IntegrityError:
+    #         messages.error(self.request, _("Failed to delete status."))
+    #         return render(self.request, self.template_name, self.get_context_data())
