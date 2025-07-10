@@ -6,6 +6,7 @@ from task_manager.statuses.models import Status
 
 User = get_user_model()
 
+
 class StatusTest(TestCase):
     fixtures = ['statuses_list.json']
 

@@ -74,7 +74,8 @@ class StatusesDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
         self.object = self.get_object()
         if self.object.task_set.exists():
             messages.error(request,
-                           _("This status is currently in use and cannot be deleted"))
+                           _("This status is currently in "
+                             "use and cannot be deleted"))
             return redirect(self.get_success_url())
 
         try:
@@ -82,6 +83,7 @@ class StatusesDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
             return super().delete(request, *args, **kwargs)
         except ProtectedError:
             messages.error(request,
-                           _("This status is currently in use and cannot be deleted"))
+                           _("This status is currently in "
+                             "use and cannot be deleted"))
             return redirect(self.get_success_url())
         

@@ -64,7 +64,8 @@ class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 
         if not request.user.is_superuser and obj != request.user:
             messages.error(request,
-                           _("You do not have permission to modify another user."))
+                           _("You do not have permission "
+                             "to modify another user."))
             return redirect('users_list')
 
         return super().dispatch(request, *args, **kwargs)
@@ -85,7 +86,8 @@ class UserDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
 
         if not request.user.is_superuser and obj != request.user:
             messages.error(request,
-                           _("You do not have permission to delete another user."))
+                           _("You do not have permission "
+                             "to delete another user."))
             return redirect('users_list')
 
         return super().dispatch(request, *args, **kwargs)
@@ -95,7 +97,8 @@ class UserDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
         if (self.object.created_tasks.exists()
             or self.object.executor_tasks.exists()):
             messages.error(request,
-                           _("This user is currently assigned to tasks and cannot be deleted"))
+                           _("This user is currently assigned "
+                             "to tasks and cannot be deleted"))
             return redirect(self.get_success_url())
 
         try:
@@ -103,5 +106,6 @@ class UserDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
             return super().delete(request, *args, **kwargs)
         except ProtectedError:
             messages.error(request,
-                           _("This user is currently assigned to tasks and cannot be deleted"))
+                           _("This user is currently assigned "
+                             "to tasks and cannot be deleted"))
             return redirect(self.get_success_url())

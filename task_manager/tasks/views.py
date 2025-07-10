@@ -98,7 +98,8 @@ class TasksDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     def delete(self, request, *args, **kwargs):
         if self.object.task_set.exists():
             messages.warning(self.request,
-                             _("This task is currently in use and cannot be deleted"))
+                             _("This task is currently "
+                               "in use and cannot be deleted"))
             return HttpResponseRedirect(self.get_success_url())
 
         try:
@@ -106,4 +107,6 @@ class TasksDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
         except IntegrityError:
             messages.error(self.request,
                            _("Failed to delete task."))
-            return render(self.request, self.template_name, self.get_context_data())
+            return render(self.request,
+                          self.template_name,
+                          self.get_context_data())

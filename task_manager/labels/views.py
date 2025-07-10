@@ -50,14 +50,6 @@ class LabelsUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     def get_object(self, *args, **kwargs):
         return get_object_or_404(Label, pk=self.kwargs.get('pk'))
 
-    # def dispatch(self, request, *args, **kwargs):
-    #     obj = self.get_object()
-    #
-    #     if not request.user.is_superuser and obj.task.user != request.user:
-    #         messages.error(request, _("You can only update your own label"))
-    #         return redirect('labels_list')
-    #     return super().dispatch(request, *args, **kwargs)
-
     def form_valid(self, form):
         try:
             response = super().form_valid(form)
@@ -77,14 +69,6 @@ class LabelsDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
 
     def get_object(self, queryset=None):
         return get_object_or_404(Label, pk=self.kwargs.get('pk'))
-
-    # def dispatch(self, request, *args, **kwargs):
-    #     obj = self.get_object()
-    #
-    #     if not request.user.is_superuser and obj.user != request.user:
-    #         messages.error(request, _("You can only delete your own label"))
-    #         return redirect('labels_list')
-    #     return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
         label = self.get_object()
