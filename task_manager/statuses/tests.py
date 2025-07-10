@@ -9,11 +9,9 @@ User = get_user_model()
 class StatusTest(TestCase):
     fixtures = ['statuses_list.json']
 
-
     def setUp(self):
         self.user = User.objects.get(username='admin')
         self.client.force_login(self.user)
-
 
     def test_create_status(self):
         response = self.client.post(reverse('statuses_create'),

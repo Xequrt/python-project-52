@@ -20,13 +20,16 @@ class CustomUserForm(UserCreationForm):
 
     class Meta:
         model = get_user_model()
-        fields = ('first_name', 'last_name', 'username', 'password1', 'password2')
+        fields = ('first_name',
+                  'last_name',
+                  'username',
+                  'password1',
+                  'password2')
         labels = {
             'username': _('Username'),
             'password1': _('Password'),
             'password2': _('Password confirmation'),
         }
-
 
     def clean(self):
         cleaned_data = super().clean()
@@ -34,9 +37,11 @@ class CustomUserForm(UserCreationForm):
         last_name = cleaned_data.get('last_name')
 
         if not first_name.isalpha():
-            self.add_error('first_name', _('First name should contain only letters.'))
+            self.add_error('first_name',
+                           _('First name should contain only letters.'))
         if not last_name.isalpha():
-            self.add_error('last_name', _('Last name should contain only letters.'))
+            self.add_error('last_name',
+                           _('Last name should contain only letters.'))
 
         return cleaned_data
 

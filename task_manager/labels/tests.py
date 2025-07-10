@@ -6,15 +6,14 @@ from task_manager.labels.models import Label
 
 User = get_user_model()
 
+
 class LabelTest(TestCase):
     fixtures = ['labels_list.json', 'users_list.json']
-
 
     def setUp(self):
         self.user = User.objects.get(username='admin')
         self.another_user = User.objects.get(username='Test')
         self.client.force_login(self.user)
-
 
     def test_create_label(self):
         response = self.client.post(reverse('label_create'),

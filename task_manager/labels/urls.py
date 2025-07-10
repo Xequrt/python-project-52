@@ -1,5 +1,8 @@
 from django.urls import path
-from .views import LabelsListView, LabelsCreateView, LabelsUpdateView, LabelsDeleteView
+from .views import (LabelsListView,
+                    LabelsCreateView,
+                    LabelsUpdateView,
+                    LabelsDeleteView)
 
 urlpatterns = [
     path('', LabelsListView.as_view(), name='labels_list'),

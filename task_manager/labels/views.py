@@ -1,4 +1,3 @@
-from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -6,7 +5,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.db import IntegrityError
 from django.utils.translation import gettext_lazy as _
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import get_object_or_404, redirect
 from .models import Label
 from .forms import LabelForm
 
@@ -29,14 +28,14 @@ class LabelsCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     success_message = _("Label created successfully!")
     login_url = reverse_lazy('login')
 
-
     def form_valid(self, form):
         try:
             form.instance.name = form.cleaned_data['name']
             response = super().form_valid(form)
             return response
         except IntegrityError:
-            messages.error(self.request, _("Label with this name already exists"))
+            messages.error(self.request,
+                           _("Label with this name already exists"))
             return self.render_to_response(self.get_context_data(form=form))
 
 
@@ -64,7 +63,8 @@ class LabelsUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
             response = super().form_valid(form)
             return response
         except IntegrityError:
-            messages.error(self.request, _("Label with this name already exists"))
+            messages.error(self.request,
+                           _("Label with this name already exists"))
             return self.render_to_response(self.get_context_data(form=form))
 
 

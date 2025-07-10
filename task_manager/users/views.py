@@ -38,7 +38,8 @@ class UserCreateView(SuccessMessageMixin, CreateView):
             response = super().form_valid(form)
             return response
         except IntegrityError:
-            messages.error(self.request, _("User with this username already exists."))
+            messages.error(self.request,
+                           _("User with this username already exists."))
             return self.render_to_response(self.get_context_data(form=form))
 
 
@@ -62,7 +63,8 @@ class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         obj = self.get_object()
 
         if not request.user.is_superuser and obj != request.user:
-            messages.error(request, _("You do not have permission to modify another user."))
+            messages.error(request,
+                           _("You do not have permission to modify another user."))
             return redirect('users_list')
 
         return super().dispatch(request, *args, **kwargs)
@@ -82,34 +84,24 @@ class UserDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
         obj = self.get_object()
 
         if not request.user.is_superuser and obj != request.user:
-            messages.error(request, _("You do not have permission to delete another user."))
+            messages.error(request,
+                           _("You do not have permission to delete another user."))
             return redirect('users_list')
 
         return super().dispatch(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
-        if self.object.created_tasks.exists() or self.object.executor_tasks.exists():
-            messages.error(request, _("This user is currently assigned to tasks and cannot be deleted"))
+        if (self.object.created_tasks.exists()
+            or self.object.executor_tasks.exists()):
+            messages.error(request,
+                           _("This user is currently assigned to tasks and cannot be deleted"))
             return redirect(self.get_success_url())
 
         try:
             messages.success(request, self.success_message)
             return super().delete(request, *args, **kwargs)
         except ProtectedError:
-            messages.error(request, _("This user is currently assigned to tasks and cannot be deleted"))
+            messages.error(request,
+                           _("This user is currently assigned to tasks and cannot be deleted"))
             return redirect(self.get_success_url())
-
-    # def delete(self, request, *args, **kwargs):
-    #     if self.object.created_tasks.exists() or self.object.executor_tasks.exists():
-    #         messages.error(request, _("This user is currently assigned to tasks and cannot be deleted"))
-    #         return HttpResponseRedirect(self.get_success_url())
-    #
-    #     if self.object == request.user:
-    #         messages.warning(request, _("You cannot delete your own account"))
-    #         return HttpResponseRedirect(self.get_success_url())
-    #     # try:
-        #     return super().delete(request, *args, **kwargs)
-        # except IntegrityError:
-        #     messages.error(request, _("Failed to delete user."))
-        #     return HttpResponseRedirect(reverse_lazy('users_list'))

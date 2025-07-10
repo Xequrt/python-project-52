@@ -6,11 +6,12 @@ from .models import Task
 from task_manager.labels.models import Label
 from task_manager.statuses.models import Status
 
+
 class TaskFilter(django_filters.FilterSet):
     status = django_filters.ModelChoiceFilter(
         queryset=Status.objects.all(),
         label=_('Status'),
-        widget = forms.Select(attrs={'class': 'form-select'})
+        widget=forms.Select(attrs={'class': 'form-select'})
     )
     executor = django_filters.ModelChoiceFilter(
         queryset=get_user_model().objects.all(),

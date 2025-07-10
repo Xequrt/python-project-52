@@ -30,12 +30,12 @@ class TaskView(LoginRequiredMixin, DetailView):
     context_object_name = 'task'
     login_url = reverse_lazy('login')
 
+
 class TasksCreateView(SuccessMessageMixin, CreateView):
     form_class = TaskForm
     template_name = 'tasks/tasks_create.html'
     success_url = reverse_lazy('tasks_list')
     success_message = _("Task created successfully!")
-
 
     def form_valid(self, form):
         try:
@@ -43,7 +43,8 @@ class TasksCreateView(SuccessMessageMixin, CreateView):
             response = super().form_valid(form)
             return response
         except IntegrityError:
-            messages.error(self.request, _("Task with this name already exists"))
+            messages.error(self.request,
+                           _("Task with this name already exists"))
             return self.render_to_response(self.get_context_data(form=form))
 
 
@@ -71,7 +72,8 @@ class TasksUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
             response = super().form_valid(form)
             return response
         except IntegrityError:
-            messages.error(self.request, _("Task with this name already exists"))
+            messages.error(self.request,
+                           _("Task with this name already exists"))
             return self.render_to_response(self.get_context_data(form=form))
 
 
@@ -95,11 +97,13 @@ class TasksDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
 
     def delete(self, request, *args, **kwargs):
         if self.object.task_set.exists():
-            messages.warning(self.request, _("This task is currently in use and cannot be deleted"))
+            messages.warning(self.request,
+                             _("This task is currently in use and cannot be deleted"))
             return HttpResponseRedirect(self.get_success_url())
 
         try:
             return super().delete(request, *args, **kwargs)
         except IntegrityError:
-            messages.error(self.request, _("Failed to delete task."))
+            messages.error(self.request,
+                           _("Failed to delete task."))
             return render(self.request, self.template_name, self.get_context_data())

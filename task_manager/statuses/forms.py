@@ -17,6 +17,10 @@ class StatusForm(forms.ModelForm):
 
     def clean_name(self):
         name = self.cleaned_data['name']
-        if Status.objects.exclude(pk=self.instance.pk).filter(name=name).exists():
+        if Status.objects.exclude(
+            pk=self.instance.pk
+        ).filter(
+            name=name
+        ).exists():
             raise ValidationError(_('Status with this name already exists'))
         return name

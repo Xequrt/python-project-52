@@ -7,7 +7,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.db import IntegrityError
 from django.utils.translation import gettext_lazy as _
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404
 from .models import Status
 from .forms import StatusForm
 
@@ -29,13 +29,13 @@ class StatusesCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     success_message = _("Status created successfully!")
     login_url = reverse_lazy('login')
 
-
     def form_valid(self, form):
         try:
             response = super().form_valid(form)
             return response
         except IntegrityError:
-            messages.error(self.request, _("Status with this name already exists"))
+            messages.error(self.request,
+                           _("Status with this name already exists"))
             return self.render_to_response(self.get_context_data(form=form))
 
 
@@ -50,14 +50,13 @@ class StatusesUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     def get_object(self, *args, **kwargs):
         return get_object_or_404(Status, pk=self.kwargs.get('pk'))
 
-
-
     def form_valid(self, form):
         try:
             response = super().form_valid(form)
             return response
         except IntegrityError:
-            messages.error(self.request, _("Status with this name already exists"))
+            messages.error(self.request,
+                           _("Status with this name already exists"))
             return self.render_to_response(self.get_context_data(form=form))
 
 
@@ -74,23 +73,15 @@ class StatusesDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
         if self.object.task_set.exists():
-            messages.error(request, _("This status is currently in use and cannot be deleted"))
+            messages.error(request,
+                           _("This status is currently in use and cannot be deleted"))
             return redirect(self.get_success_url())
 
         try:
             messages.success(request, self.success_message)
             return super().delete(request, *args, **kwargs)
         except ProtectedError:
-            messages.error(request, _("This status is currently in use and cannot be deleted"))
+            messages.error(request,
+                           _("This status is currently in use and cannot be deleted"))
             return redirect(self.get_success_url())
-
-    # def delete(self, request, *args, **kwargs):
-    #     if self.object.task_set.exists():
-    #         messages.warning(self.request, _("This status is currently in use and cannot be deleted"))
-    #         return HttpResponseRedirect(self.get_success_url())
-    #
-    #     try:
-    #         return super().delete(request, *args, **kwargs)
-    #     except IntegrityError:
-    #         messages.error(self.request, _("Failed to delete status."))
-    #         return render(self.request, self.template_name, self.get_context_data())
+        

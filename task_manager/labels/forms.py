@@ -17,6 +17,10 @@ class LabelForm(forms.ModelForm):
 
     def clean_name(self):
         name = self.cleaned_data['name']
-        if Label.objects.exclude(pk=self.instance.pk).filter(name=name).exists():
+        if Label.objects.exclude(
+            pk=self.instance.pk
+        ).filter(
+            name=name
+        ).exists():
             raise ValidationError(_('Label with this name already exists'))
         return name

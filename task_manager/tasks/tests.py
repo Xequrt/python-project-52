@@ -6,15 +6,14 @@ from task_manager.tasks.models import Task
 
 User = get_user_model()
 
+
 class TaskTest(TestCase):
     fixtures = ['statuses_list.json', 'users_list.json', 'tasks_list.json']
-
 
     def setUp(self):
         self.user = User.objects.get(username='admin')
         self.another_user = User.objects.get(username='Test')
         self.client.force_login(self.user)
-
 
     def test_create_task(self):
         response = self.client.post(reverse('tasks_create'),

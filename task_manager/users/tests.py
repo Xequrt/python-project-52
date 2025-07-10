@@ -4,9 +4,9 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
+
 class UserCreationTest(TestCase):
     fixtures = ['users_list.json']
-
 
     def setUp(self):
         self.user = User.objects.get(username='admin')
