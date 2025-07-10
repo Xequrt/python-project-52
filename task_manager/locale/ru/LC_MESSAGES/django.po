@@ -335,7 +335,7 @@ msgstr "Задача успешно удалена"
 
 #: task_manager/tasks/views.py:92
 msgid "You can only delete your own task"
-msgstr "Вы можете удалять только свою задачу"
+msgstr "Задачу может удалить только ее автор"
 
 #: task_manager/tasks/views.py:98
 msgid "This task is currently in use and cannot be deleted"
