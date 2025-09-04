@@ -32,13 +32,11 @@
                 </ul>
                 <div class="d-flex align-items-stretch">
                     {% if user.is_authenticated %}
-                    <div class="text-end me-2">
-                        <span class="me-2 text-white">{{ user.get_username }}</span>
-                        <form method="post" action="{% url 'logout' %}">
-                            {% csrf_token %}
-                            <button class="btn-warning" onclick="location.href='{% url 'logout' %}'">{% trans "Logout" context "menu_item" %}</button>
-                        </form>
-                    </div>
+                    <span class="mt-0 py-1 me-2 text-white fs-7">{{ user.get_username|capfirst }}</span>
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button class="btn-light" onclick="location.href='{% url 'logout' %}'">{% trans "Logout" context "menu_item" %}</button>
+                    </form>
                     {% else %}
                     <div class="text-end me-2">
                         <button class="btn btn-outline-light me-2" onclick="location.href='{% url 'login' %}'">{% trans "Log In" context "menu_item" %}</button>
@@ -61,7 +59,7 @@
         </div>
     </header>
     {% block content %}{% endblock %}
-    <footer class="mt-auto py-4">
+    <footer class="mt-5 py-5">
         <div class="container d-flex justify-content-end w-100">
           <div class="text-end text-secondary small">
             <p class="mb-0">
