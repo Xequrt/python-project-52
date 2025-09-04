@@ -1,7 +1,10 @@
 [project]
 name = "hexlet-code"
+authors = [
+    {name = "Dmitry Kabluchko", email = "xequrt@yandex.ru"},
+]
 version = "0.1.0"
-description = "Add your description here"
+description = "Hexlet project #4 - Task Manager"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
