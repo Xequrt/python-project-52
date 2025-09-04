@@ -20,6 +20,9 @@ migrate:
 start:
 	uv run manage.py runserver 0.0.0.0:8000
 
+start-gunicorn:
+	gunicorn task_manager.wsgi:application --bind 0.0.0.0:8000
+
 test:
 	uv run python3 manage.py test
 
