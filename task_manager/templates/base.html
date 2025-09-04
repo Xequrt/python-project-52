@@ -33,6 +33,7 @@
                 <div class="d-flex align-items-stretch">
                     {% if user.is_authenticated %}
                     <div class="text-end me-2">
+                        <span class="me-2 text-white">{{ user.get_username }}</span>
                         <form method="post" action="{% url 'logout' %}">
                             {% csrf_token %}
                             <button class="btn-warning" onclick="location.href='{% url 'logout' %}'">{% trans "Logout" context "menu_item" %}</button>
@@ -60,5 +61,22 @@
         </div>
     </header>
     {% block content %}{% endblock %}
+    <footer class="mt-auto py-4">
+        <div class="container d-flex justify-content-end w-100">
+          <div class="text-end text-secondary small">
+            <p class="mb-0">
+              &copy; {% now "Y" %} {% translate "Task Manager" %} |
+              {% translate "Developed by" %}
+              <a href="https://github.com/Xequrt"
+                 class="link-dark text-decoration-none"
+                 onmouseover="this.style.opacity='0.6'"
+                 onmouseout="this.style.opacity='1'"
+                 target="_blank" rel="noopener noreferrer">
+                 Xequrt
+              </a>
+            </p>
+          </div>
+        </div>
+    </footer>
 </body>
 </html>
