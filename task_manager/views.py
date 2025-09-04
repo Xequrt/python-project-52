@@ -26,7 +26,7 @@ class UserLoginView(SuccessMessageMixin, LoginView):
                            _("Please enter a valid username and password."
                              "Both fields may be case sensitive. "))
             return self.render_to_response(self.get_context_data(form=form))
-    #
+
     def get_success_url(self):
         return reverse_lazy('index')
 
